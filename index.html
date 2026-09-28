@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EasyBridge — Design Templates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#F8FAFC;min-height:100vh;padding:48px 40px 64px}
+.logo{display:flex;align-items:center;gap:10px;margin-bottom:36px}
+.logo-text{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#084D4D}
+.logo-text span{color:#F5A623}
+.intro{max-width:680px;margin-bottom:48px}
+h1{font-family:'Playfair Display',serif;font-size:34px;color:#0A1628;margin-bottom:8px}
+.sub{color:#64748B;font-size:15px;line-height:1.7}
+
+.changes-box{
+  background:white;border:1px solid #E2E8F0;border-left:4px solid #0D6E6E;
+  border-radius:8px;padding:20px 24px;margin-bottom:48px;max-width:780px;
+}
+.changes-box h3{font-size:13px;font-weight:700;color:#0D6E6E;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+.changes-list{display:flex;flex-direction:column;gap:6px}
+.change-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#475569;line-height:1.5}
+.change-item::before{content:'✓';color:#0D6E6E;font-weight:700;flex-shrink:0;margin-top:1px}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:960px}
+.card{
+  background:white;border-radius:14px;padding:28px;
+  border:1.5px solid #E2E8F0;transition:all 0.2s;
+  display:flex;flex-direction:column;
+}
+.card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(13,110,110,0.1);transform:translateY(-2px)}
+.t1{--accent:#0D6E6E}.t2{--accent:#1A9B9B}.t3{--accent:#0A8A6A}.t4{--accent:#F5A623}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.card-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#E2E8F0;line-height:1}
+.card-name{font-size:20px;font-weight:700;color:#1E293B;margin-bottom:4px}
+.card-vibe{
+  font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--accent);background:transparent;padding:0;
+  border:1.5px solid var(--accent);padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:12px;
+}
+.card-desc{font-size:13px;color:#64748B;line-height:1.7;margin-bottom:16px;flex:1}
+.card-pages{margin-bottom:18px}
+.card-pages h4{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#94A3B8;margin-bottom:8px}
+.pages-list{display:flex;flex-wrap:wrap;gap:6px}
+.page-chip{font-size:11px;color:#64748B;background:#F1F5F9;padding:3px 10px;border-radius:4px}
+.card-attrs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px}
+.attr{font-size:11px;color:#64748B;border:1px solid #E2E8F0;padding:3px 10px;border-radius:4px}
+.unique-badge{background:#FEF3DC;color:#92400E;border-color:#FCD34D}
+.card-link{
+  display:block;width:100%;text-align:center;
+  padding:12px;border-radius:8px;
+  background:var(--accent);color:white;font-size:13px;font-weight:700;
+  transition:opacity 0.2s;letter-spacing:0.3px;
+}
+.card-link:hover{opacity:0.9}
+
+footer{max-width:960px;margin-top:48px;padding-top:24px;border-top:1px solid #E2E8F0;color:#94A3B8;font-size:12px;display:flex;justify-content:space-between;align-items:center}
+</style>
+</head>
+<body>
+
+<div class="logo">
+  <svg width="36" height="36" viewBox="0 0 38 38"><circle cx="4" cy="28" r="3.5" fill="#0D6E6E" opacity="0.35"/><circle cx="11" cy="21" r="4.5" fill="#0D6E6E" opacity="0.6"/><circle cx="19" cy="16" r="6" fill="#0D6E6E"/><circle cx="27" cy="21" r="4.5" fill="#F5A623" opacity="0.8"/><circle cx="34" cy="28" r="3.5" fill="#F5A623" opacity="0.5"/><path d="M4 28 Q11.5 13 19 16 Q26.5 19 34 28" fill="none" stroke="#0D6E6E" stroke-width="1.5" stroke-dasharray="3,2.5" opacity="0.45"/></svg>
+  <span class="logo-text">Easy<span>Bridge</span></span>
+</div>
+
+<div class="intro">
+  <h1>EasyBridge — Design Templates</h1>
+  <p class="sub">Four distinct visual directions for the EasyBridge website. Open each template to explore the full site: navigate between pages using the top nav — no scrolling between sections.</p>
+</div>
+
+<div class="changes-box">
+  <h3>What's been fixed across all templates</h3>
+  <div class="changes-list">
+    <div class="change-item">Single-page app navigation — nav links switch between pages instantly, no scroll-to-section behaviour</div>
+    <div class="change-item">Services and Pricing are no longer duplicated — T1/T3/T4 have Services; T2 (Edge) has Pricing with FAQs instead</div>
+    <div class="change-item">Audience filter fixed — "For Learners" now shows only Cloud Tools Training; "For Professionals" shows both Cloud Tools and AI Tools</div>
+    <div class="change-item">All 3 business service cards (Implementation · Recruitment · FP&amp;A) are visible at once in a compact 3-column layout without scrolling</div>
+    <div class="change-item">About page now combines "About EasyBridge" + "Why EasyBridge" values in one place</div>
+    <div class="change-item">Who We Serve page now combines audience tabs + Client Stories / Testimonials in one place</div>
+    <div class="change-item">Email-only CTA section removed — Contact page has a single full form (name, email, WhatsApp, role, service interest, message)</div>
+    <div class="change-item">Location removed from contact section</div>
+    <div class="change-item">All service buttons now read "Enquire Now"</div>
+    <div class="change-item">Footer position fixed — no longer overlaps content. Removed fixed-height viewport constraint so footer flows naturally after page content</div>
+    <div class="change-item">Footer colour now matches each template's brand: T1 &amp; T4 use dark teal (#084D4D), T2 (Edge) uses the dark surface with a teal top border, T3 (Flow) uses the primary teal (#0D6E6E) matching its gradient hero</div>
+  </div>
+</div>
+
+<div class="grid">
+
+  <div class="card t1">
+    <div class="card-header">
+      <div><div class="card-name">Clarity</div><div class="card-vibe">Clean · Professional · Trustworthy</div></div>
+      <div class="card-num">01</div>
+    </div>
+    <p class="card-desc">White and light-grey base with structured card grid. Teal accents, crisp Inter typography, and subtle hover effects. Feels like a reliable, established consultancy. Best for clients who value professionalism and trust.</p>
+    <div class="card-pages">
+      <h4>Pages</h4>
+      <div class="pages-list">
+        <span class="page-chip">Home</span>
+        <span class="page-chip">Services</span>
+        <span class="page-chip">About</span>
+        <span class="page-chip">Who We Serve</span>
+        <span class="page-chip">Contact</span>
+      </div>
+    </div>
+    <div class="card-attrs">
+      <span class="attr">Inter font</span>
+      <span class="attr">White / Light base</span>
+      <span class="attr">Card grid services</span>
+      <span class="attr">Hero stat panel</span>
+    </div>
+    <a href="template1-clarity.html" class="card-link" target="_blank">Open Template 1 →</a>
+  </div>
+
+  <div class="card t2">
+    <div class="card-header">
+      <div><div class="card-name">Edge</div><div class="card-vibe">Bold · Dark · Tech-forward · Dynamic</div></div>
+      <div class="card-num">02</div>
+    </div>
+    <p class="card-desc">Dark navy base with glassmorphism cards and teal gradient accents. Grid background texture, glow effects on hover. Feels like a modern fintech or SaaS product. Best for projecting cutting-edge expertise.</p>
+    <div class="card-pages">
+      <h4>Pages</h4>
+      <div class="pages-list">
+        <span class="page-chip">Home</span>
+        <span class="page-chip unique-badge">Pricing (with FAQ)</span>
+        <span class="page-chip">About</span>
+        <span class="page-chip">Who We Serve</span>
+        <span class="page-chip">Contact</span>
+      </div>
+    </div>
+    <div class="card-attrs">
+      <span class="attr">DM Sans font</span>
+      <span class="attr">Dark navy base</span>
+      <span class="attr unique-badge">Pricing instead of Services</span>
+      <span class="attr">Glass cards</span>
+    </div>
+    <a href="template2-edge.html" class="card-link" target="_blank">Open Template 2 →</a>
+  </div>
+
+  <div class="card t3">
+    <div class="card-header">
+      <div><div class="card-name">Flow</div><div class="card-vibe">Warm · Human · Gradient · Friendly</div></div>
+      <div class="card-num">03</div>
+    </div>
+    <p class="card-desc">Full teal gradient hero with rounded cards, avatar testimonials, and warm amber warmth. Nunito font gives it an approachable, human energy. Best for connecting emotionally with the "skills over degrees, any age" mission.</p>
+    <div class="card-pages">
+      <h4>Pages</h4>
+      <div class="pages-list">
+        <span class="page-chip">Home</span>
+        <span class="page-chip">Services</span>
+        <span class="page-chip">About</span>
+        <span class="page-chip">Who We Serve</span>
+        <span class="page-chip">Contact</span>
+      </div>
+    </div>
+    <div class="card-attrs">
+      <span class="attr">Nunito font (rounder)</span>
+      <span class="attr">Teal gradient hero</span>
+      <span class="attr">Rounded card edges</span>
+      <span class="attr">Avatar testimonials</span>
+    </div>
+    <a href="template3-flow.html" class="card-link" target="_blank">Open Template 3 →</a>
+  </div>
+
+  <div class="card t4">
+    <div class="card-header">
+      <div><div class="card-name">Meridian</div><div class="card-vibe">Minimal · Editorial · Premium · Refined</div></div>
+      <div class="card-num">04</div>
+    </div>
+    <p class="card-desc">Ultra-clean whitespace with large Playfair Display headings, thin rule dividers, and numbered sections (01–04). Services shown as editorial rows rather than cards. Amber accent stripe on hero. Best for premium, high-trust impression with business clients and larger SMEs.</p>
+    <div class="card-pages">
+      <h4>Pages</h4>
+      <div class="pages-list">
+        <span class="page-chip">Home</span>
+        <span class="page-chip">Services</span>
+        <span class="page-chip">About</span>
+        <span class="page-chip">Who We Serve</span>
+        <span class="page-chip">Contact</span>
+      </div>
+    </div>
+    <div class="card-attrs">
+      <span class="attr">Lato + Playfair Display</span>
+      <span class="attr">White dominant</span>
+      <span class="attr unique-badge">List-format services</span>
+      <span class="attr">Numbered sections</span>
+    </div>
+    <a href="template4-meridian.html" class="card-link" target="_blank">Open Template 4 →</a>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 EasyBridge — Design Templates v3 (Footer position &amp; theme fixes applied to all templates)</span>
+  <span style="color:#0D6E6E;font-weight:600">Skills Over Degrees. Growth Has No Age.</span>
+</footer>
+
+</body>
+</html>

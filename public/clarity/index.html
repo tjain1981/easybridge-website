@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EasyBridge — Clarity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════
+   TEMPLATE 1 — CLARITY
+   Clean · Professional · Light
+═══════════════════════════════════ */
+:root{
+  --teal:#0D6E6E; --teal-d:#084D4D; --teal-l:#E1F5F0;
+  --amber:#F5A623; --amber-l:#FEF3DC;
+  --navy:#0A1628; --text:#1E293B; --muted:#64748B;
+  --border:#E2E8F0; --surface:#F8FAFC; --white:#fff;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);min-height:100vh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ── */
+nav{
+  flex-shrink:0;position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:64px;
+  background:var(--white);border-bottom:1px solid var(--border);
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-text{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--teal-d)}
+.logo-text span{color:var(--amber)}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-link{
+  font-size:14px;font-weight:500;color:var(--muted);
+  padding:7px 16px;border-radius:8px;cursor:pointer;
+  border:none;background:none;font-family:'Inter',sans-serif;
+  transition:all 0.15s;
+}
+.nav-link:hover{color:var(--teal);background:var(--teal-l)}
+.nav-link.active{color:var(--teal);font-weight:600;background:var(--teal-l)}
+.nav-cta{
+  background:var(--teal);color:white;
+  padding:8px 22px;border-radius:8px;
+  font-size:14px;font-weight:600;
+  border:none;font-family:'Inter',sans-serif;cursor:pointer;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:var(--teal-d)}
+
+/* ── PAGES ── */
+main{flex:1}
+.page{display:none}
+.page.active{display:block}
+
+/* ── HOME ── */
+.home-wrap{
+  min-height:calc(100vh - 64px);
+  background:var(--surface);
+  display:flex;align-items:center;
+  padding:64px 48px;
+  position:relative;overflow:hidden;
+}
+.home-wrap::before{
+  content:'';position:absolute;right:-100px;top:-100px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(13,110,110,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.home-inner{
+  max-width:1040px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 320px;gap:80px;align-items:center;
+  position:relative;
+}
+.home-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--teal-l);color:var(--teal-d);
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:5px 14px;border-radius:4px;margin-bottom:20px;
+}
+.home-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(38px,4.5vw,58px);font-weight:900;
+  line-height:1.06;color:var(--text);margin-bottom:18px;
+}
+.home-h1 em{color:var(--teal);font-style:normal}
+.home-desc{font-size:16px;color:var(--muted);line-height:1.8;max-width:520px;margin-bottom:32px}
+.home-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.btn-primary{
+  background:var(--teal);color:white;
+  padding:13px 28px;border-radius:8px;
+  font-size:14px;font-weight:600;
+  border:none;font-family:'Inter',sans-serif;cursor:pointer;
+  transition:background 0.2s;display:inline-block;
+}
+.btn-primary:hover,.btn-primary:focus{background:var(--teal-d)}
+.btn-ghost{
+  background:transparent;color:var(--teal);
+  border:1.5px solid var(--teal);
+  padding:12px 28px;border-radius:8px;
+  font-size:14px;font-weight:500;
+  font-family:'Inter',sans-serif;cursor:pointer;
+  transition:all 0.2s;display:inline-block;
+}
+.btn-ghost:hover{background:var(--teal-l)}
+.home-badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{
+  display:flex;align-items:center;gap:6px;
+  background:white;border:1px solid var(--border);
+  padding:6px 14px;border-radius:6px;
+  font-size:12px;font-weight:500;color:var(--muted);
+}
+
+/* Stat card */
+.stat-card{
+  background:white;border:1px solid var(--border);
+  border-radius:16px;padding:28px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.06);
+}
+.stat-card-title{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:20px;
+}
+.stat-rows{display:flex;flex-direction:column;gap:16px}
+.stat-row{display:flex;align-items:center;gap:14px}
+.stat-icon{
+  width:42px;height:42px;border-radius:10px;
+  background:var(--teal-l);display:flex;align-items:center;
+  justify-content:center;font-size:18px;flex-shrink:0;
+}
+.stat-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--teal-d);line-height:1}
+.stat-val em{color:var(--amber);font-style:normal}
+.stat-lbl{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* ── SHARED PAGE LAYOUT ── */
+.page-content{max-width:1040px;margin:0 auto;padding:52px 48px}
+.page-hd{margin-bottom:40px}
+.section-label{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--teal);margin-bottom:8px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,3vw,36px);font-weight:700;
+  color:var(--text);line-height:1.15;margin-bottom:8px;
+}
+.section-sub{font-size:15px;color:var(--muted);line-height:1.7;max-width:540px}
+
+/* ── SERVICES ── */
+.filter-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.filter-btn{
+  padding:7px 18px;border-radius:6px;font-size:13px;font-weight:500;
+  cursor:pointer;border:1px solid var(--border);
+  background:white;color:var(--muted);
+  transition:all 0.15s;font-family:'Inter',sans-serif;
+}
+.filter-btn.active{background:var(--teal);color:white;border-color:var(--teal)}
+.filter-btn:hover:not(.active){border-color:var(--teal);color:var(--teal)}
+
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc-card{
+  background:white;border:1px solid var(--border);border-radius:12px;
+  padding:22px;transition:all 0.2s;display:flex;flex-direction:column;
+}
+.svc-card:hover{box-shadow:0 8px 28px rgba(13,110,110,0.09);border-color:var(--teal);transform:translateY(-2px)}
+.svc-icon{
+  width:44px;height:44px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:12px;flex-shrink:0;
+}
+.svc-card h3{font-size:15px;font-weight:700;margin-bottom:7px;color:var(--text)}
+.svc-card > p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.svc-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.tag{font-size:10px;font-weight:600;padding:3px 9px;border-radius:4px}
+.tag-teal{background:var(--teal-l);color:var(--teal-d)}
+.tag-amber{background:var(--amber-l);color:#7A4A00}
+.tag-purple{background:#EEF2FF;color:#3730A3}
+.tag-blue{background:#E0F2FE;color:#0369A1}
+.tag-coral{background:#FFF1EE;color:#9A3412}
+.svc-divider{height:1px;background:var(--border);margin:12px 0}
+.outcome-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.outcome-list{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;flex:1}
+.outcome-item{display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.5;color:var(--text)}
+.outcome-item::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;font-size:11px;margin-top:1px}
+.svc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--border);margin-top:auto}
+.price-txt{font-size:11px;color:var(--muted)}
+.price-txt strong{display:block;font-size:14px;font-weight:700;color:var(--text)}
+.btn-svc{
+  background:var(--teal);color:white;
+  padding:7px 16px;border-radius:6px;font-size:12px;font-weight:600;
+  border:none;font-family:'Inter',sans-serif;cursor:pointer;
+  transition:background 0.2s;white-space:nowrap;
+}
+.btn-svc:hover{background:var(--teal-d)}
+
+/* ── ABOUT PAGE ── */
+.about-page{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+
+/* About left: founder */
+.about-founder{display:flex;flex-direction:column}
+.founder-avatar{
+  width:160px;height:160px;border-radius:16px;
+  background:linear-gradient(135deg,var(--teal-l),#c4eae4);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:64px;font-weight:700;
+  color:var(--teal);margin-bottom:16px;
+}
+.founder-role{font-size:12px;font-weight:600;color:var(--teal);margin-bottom:12px}
+.founder-bio{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:16px}
+.founder-creds{display:flex;flex-direction:column;gap:8px}
+.cred{display:flex;align-items:flex-start;gap:9px;font-size:13px}
+.cred::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:4px}
+
+/* About right: values */
+.values-col{display:flex;flex-direction:column;gap:16px}
+.value-card{
+  background:white;border:1px solid var(--border);border-radius:12px;
+  padding:22px;display:flex;gap:16px;align-items:flex-start;
+}
+.value-num{
+  font-family:'Playfair Display',serif;
+  font-size:40px;font-weight:700;color:var(--teal);line-height:1;flex-shrink:0;
+}
+.value-num em{color:var(--amber);font-style:normal;font-size:24px}
+.value-info h4{font-size:14px;font-weight:600;margin-bottom:5px}
+.value-info p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── WHO WE SERVE PAGE ── */
+.serve-page{display:flex;flex-direction:column;gap:48px}
+
+/* Tabs */
+.tabs{display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:4px;width:fit-content;margin-bottom:24px}
+.tab-btn{
+  padding:8px 20px;border-radius:6px;font-size:13px;font-weight:500;
+  cursor:pointer;border:none;background:transparent;color:var(--muted);
+  transition:all 0.15s;font-family:'Inter',sans-serif;
+}
+.tab-btn.active{background:white;color:var(--teal);font-weight:600;box-shadow:0 1px 6px rgba(0,0,0,0.08)}
+.serve-panel{display:none}
+.serve-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.serve-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px;background:white;border-radius:10px;border:1px solid var(--border);
+}
+.serve-dot{width:7px;height:7px;min-width:7px;border-radius:50%;background:var(--amber);margin-top:4px;flex-shrink:0}
+.serve-item h4{font-size:13px;font-weight:600;margin-bottom:3px}
+.serve-item p{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* Testimonials */
+.testi-hd{margin-bottom:20px}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.testi{
+  background:white;border:1px solid var(--border);border-radius:12px;
+  padding:20px;position:relative;
+}
+.quote-mark{
+  font-family:'Playfair Display',serif;font-size:48px;
+  color:var(--teal-l);position:absolute;top:6px;right:14px;
+  line-height:1;pointer-events:none;
+}
+.testi p{font-size:13px;line-height:1.75;font-style:italic;margin-bottom:14px}
+.testi-author{border-top:1px solid var(--border);padding-top:12px}
+.testi-name{font-size:13px;font-weight:600;color:var(--teal-d)}
+.testi-role{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* ── CONTACT PAGE ── */
+.contact-page{display:grid;grid-template-columns:1fr 1.5fr;gap:56px;align-items:start}
+.contact-left h2{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:10px}
+.contact-left p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:24px}
+.contact-ways{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.contact-way{
+  display:flex;gap:14px;padding:14px;
+  background:var(--surface);border-radius:10px;border:1px solid var(--border);
+}
+.way-icon{font-size:18px;flex-shrink:0}
+.way-label{font-size:12px;font-weight:600;margin-bottom:2px}
+.way-val{font-size:13px;color:var(--muted)}
+.way-val a{color:var(--teal);font-weight:500}
+.contact-form-wrap{background:white;border:1px solid var(--border);border-radius:16px;padding:32px}
+.form-title{font-size:18px;font-weight:700;margin-bottom:4px}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:22px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.form-group label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.form-group input,.form-group select,.form-group textarea{
+  padding:10px 12px;border:1px solid var(--border);border-radius:8px;
+  font-size:13px;font-family:'Inter',sans-serif;color:var(--text);
+  outline:none;transition:border-color 0.15s;background:white;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-services{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px}
+.fs-opt{
+  display:flex;align-items:center;gap:7px;padding:8px 12px;
+  border:1px solid var(--border);border-radius:7px;cursor:pointer;
+  font-size:12px;transition:all 0.15s;
+}
+.fs-opt input{accent-color:var(--teal)}
+.fs-opt:has(input:checked){background:var(--teal-l);border-color:var(--teal);color:var(--teal-d);font-weight:600}
+.form-submit{
+  width:100%;padding:12px;border-radius:8px;background:var(--teal);color:white;
+  font-size:14px;font-weight:600;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:background 0.2s;
+}
+.form-submit:hover{background:var(--teal-d)}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.success-icon{font-size:44px;margin-bottom:14px}
+.form-success h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px}
+.form-success p{font-size:14px;color:var(--muted)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--teal-d);padding:48px 48px 22px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;
+  max-width:1040px;margin:0 auto;
+  padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.15);margin-bottom:20px;
+}
+.footer-brand p{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.8;margin-top:12px;max-width:220px}
+.footer-col h4{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.footer-col a{display:block;font-size:12px;color:rgba(255,255,255,0.65);margin-bottom:8px;transition:color 0.15s;cursor:pointer}
+.footer-col a:hover{color:white}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;max-width:1040px;margin:0 auto}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.5)}
+.footer-tagline{font-size:11px;color:var(--amber);font-style:italic}
+
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .home-inner{grid-template-columns:1fr}
+  .stat-card{display:none}
+  .page-content{padding:40px 20px}
+  .svc-grid{grid-template-columns:1fr}
+  .about-page{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .contact-page{grid-template-columns:1fr}
+  .serve-panel.active{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;padding:32px 20px 32px;margin:0}
+  .footer-bottom{padding:0 20px 20px}
+  .home-wrap{padding:48px 20px}
+  .form-row{grid-template-columns:1fr}
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.page.active{animation:fadeIn 0.25s ease}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo" onclick="showPage('home');return false">
+    <svg width="34" height="34" viewBox="0 0 38 38"><circle cx="4" cy="28" r="3.5" fill="#0D6E6E" opacity="0.3"/><circle cx="11" cy="21" r="4.5" fill="#0D6E6E" opacity="0.55"/><circle cx="19" cy="16" r="6" fill="#0D6E6E"/><circle cx="27" cy="21" r="4.5" fill="#F5A623" opacity="0.8"/><circle cx="34" cy="28" r="3.5" fill="#F5A623" opacity="0.5"/><path d="M4 28 Q11.5 13 19 16 Q26.5 19 34 28" fill="none" stroke="#0D6E6E" stroke-width="1.5" stroke-dasharray="3,2.5" opacity="0.4"/></svg>
+    <span class="logo-text">Easy<span>Bridge</span></span>
+  </a>
+  <div class="nav-links">
+    <button class="nav-link active" data-page="home" onclick="showPage('home')">Home</button>
+    <button class="nav-link" data-page="services" onclick="showPage('services')">Services</button>
+    <button class="nav-link" data-page="about" onclick="showPage('about')">About</button>
+    <button class="nav-link" data-page="serve" onclick="showPage('serve')">Who We Serve</button>
+    <button class="nav-cta" onclick="showPage('contact')">Get Started</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <div class="home-wrap">
+    <div class="home-inner">
+      <div class="home-left">
+        <div class="home-tag">Skills · Growth · No Barriers</div>
+        <h1 class="home-h1">No Degree. No Age Limit.<br><em>Just Results.</em></h1>
+        <p class="home-desc">EasyBridge empowers students, professionals, and businesses with cloud tool training, AI upskilling, business implementation, recruitment, and FP&amp;A — built for India, designed for everyone.</p>
+        <div class="home-btns">
+          <button class="btn-primary" onclick="showPage('services')">Explore Services</button>
+          <button class="btn-ghost" onclick="showPage('contact')">Talk to Us →</button>
+        </div>
+        <div class="home-badges">
+          <span class="badge">🎓 No degree required</span>
+          <span class="badge">🌱 Any age, any stage</span>
+          <span class="badge">🇮🇳 India-focused</span>
+          <span class="badge">⚡ Skills over degrees</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-title">At a Glance</div>
+        <div class="stat-rows">
+          <div class="stat-row"><div class="stat-icon">🎓</div><div><div class="stat-val">500<em>+</em></div><div class="stat-lbl">Professionals trained</div></div></div>
+          <div class="stat-row"><div class="stat-icon">🏢</div><div><div class="stat-val">80<em>+</em></div><div class="stat-lbl">SMEs served</div></div></div>
+          <div class="stat-row"><div class="stat-icon">⚙️</div><div><div class="stat-val">5</div><div class="stat-lbl">Service streams</div></div></div>
+          <div class="stat-row"><div class="stat-icon">🏅</div><div><div class="stat-val">CA<em>-led</em></div><div class="stat-lbl">Expert advisory</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES PAGE -->
+<div class="page" id="page-services">
+  <div class="page-content">
+    <div class="page-hd">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Five Ways EasyBridge Helps You Grow</h2>
+      <p class="section-sub">From first-time learners to growing businesses — full-journey support, no gatekeeping.</p>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterSvc('all',this)">All Services</button>
+      <button class="filter-btn" onclick="filterSvc('learner',this)">For Learners</button>
+      <button class="filter-btn" onclick="filterSvc('professional',this)">For Professionals</button>
+      <button class="filter-btn" onclick="filterSvc('business',this)">For Businesses</button>
+    </div>
+    <div class="svc-grid" id="svc-grid">
+
+      <!-- Cloud Tools: learner + professional -->
+      <div class="svc-card" data-aud="learner professional">
+        <div class="svc-icon" style="background:#E1F5F0">☁️</div>
+        <h3>Cloud Tools Training</h3>
+        <p>Hands-on training on India's most in-demand cloud accounting and business software. Job-ready skills, no degree required.</p>
+        <div class="svc-tags">
+          <span class="tag tag-teal">Learners</span>
+          <span class="tag tag-teal">Professionals</span>
+          <span class="tag tag-amber">Certificate</span>
+        </div>
+        <div class="svc-divider"></div>
+        <div class="outcome-label">What you get</div>
+        <div class="outcome-list">
+          <div class="outcome-item">Zoho Books, Tally Cloud, QuickBooks, Excel &amp; Sheets</div>
+          <div class="outcome-item">Live instructor-led batches + recordings</div>
+          <div class="outcome-item">India GST, TDS compliance integrated throughout</div>
+          <div class="outcome-item">EasyBridge certificate, recognised by employers</div>
+        </div>
+        <div class="svc-footer">
+          <div class="price-txt">Starting from<strong>₹2,999 / course</strong></div>
+          <button class="btn-svc" onclick="showPage('contact')">Enquire Now</button>
+        </div>
+      </div>
+
+      <!-- AI Tools: professional ONLY (not learner) -->
+      <div class="svc-card" data-aud="professional">
+        <div class="svc-icon" style="background:#EEF2FF">🤖</div>
+        <h3>AI Tools — Finance &amp; Law</h3>
+        <p>Practical AI upskilling for CAs, tax professionals, and litigators. India-specific, not generic global AI training.</p>
+        <div class="svc-tags">
+          <span class="tag tag-purple">For CAs</span>
+          <span class="tag tag-purple">Tax Professionals</span>
+          <span class="tag tag-amber">Advanced</span>
+        </div>
+        <div class="svc-divider"></div>
+        <div class="outcome-label">What you get</div>
+        <div class="outcome-list">
+          <div class="outcome-item">AI for GST, Litigation, Accounting &amp; Prompt Engineering</div>
+          <div class="outcome-item">50+ ready-to-use India-specific prompt templates</div>
+          <div class="outcome-item">Ethics and compliance guardrails built in</div>
+          <div class="outcome-item">CPE-credit eligible sessions for ICAI members</div>
+        </div>
+        <div class="svc-footer">
+          <div class="price-txt">Starting from<strong>₹3,999 / workshop</strong></div>
+          <button class="btn-svc" onclick="showPage('contact')">Enquire Now</button>
+        </div>
+      </div>
+
+      <!-- Business Implementation -->
+      <div class="svc-card" data-aud="business">
+        <div class="svc-icon" style="background:#E1F5F0">⚙️</div>
+        <h3>Business Implementation</h3>
+        <p>Full Zoho One deployment — from scoping to go-live to team training. No tech team needed on your side.</p>
+        <div class="svc-tags">
+          <span class="tag tag-teal">SMEs</span>
+          <span class="tag tag-teal">5–100 teams</span>
+          <span class="tag tag-amber">Project-based</span>
+        </div>
+        <div class="svc-divider"></div>
+        <div class="outcome-label">What you get</div>
+        <div class="outcome-list">
+          <div class="outcome-item">Zoho Books, CRM, Inventory, Flow — end to end</div>
+          <div class="outcome-item">Data migration from Tally or Excel</div>
+          <div class="outcome-item">India GST, TDS configured from day one</div>
+          <div class="outcome-item">90-day post go-live support included</div>
+        </div>
+        <div class="svc-footer">
+          <div class="price-txt">Starting from<strong>₹45,000 / project</strong></div>
+          <button class="btn-svc" onclick="showPage('contact')">Enquire Now</button>
+        </div>
+      </div>
+
+      <!-- Recruitment -->
+      <div class="svc-card" data-aud="business">
+        <div class="svc-icon" style="background:#E0F2FE">🔍</div>
+        <h3>Skill-First Recruitment</h3>
+        <p>We find people who can actually do the job. Practical skill screening before you meet any candidate.</p>
+        <div class="svc-tags">
+          <span class="tag tag-blue">Business Owners</span>
+          <span class="tag tag-amber">Per-hire / retainer</span>
+        </div>
+        <div class="svc-divider"></div>
+        <div class="outcome-label">What you get</div>
+        <div class="outcome-list">
+          <div class="outcome-item">Real skill-based JDs — no recycled templates</div>
+          <div class="outcome-item">Zoho, Excel, GST practical tests pre-interview</div>
+          <div class="outcome-item">3–5 pre-vetted, skill-verified candidates</div>
+          <div class="outcome-item">30-day free replacement guarantee</div>
+        </div>
+        <div class="svc-footer">
+          <div class="price-txt">Success fee<strong>8–12% of CTC</strong></div>
+          <button class="btn-svc" onclick="showPage('contact')">Enquire Now</button>
+        </div>
+      </div>
+
+      <!-- FP&A -->
+      <div class="svc-card" data-aud="business">
+        <div class="svc-icon" style="background:#FFF1EE">📊</div>
+        <h3>FP&amp;A In-House — Managed</h3>
+        <p>CFO-level financial planning without a full-time CFO. Monthly MIS, budgets, dashboards — CA-led.</p>
+        <div class="svc-tags">
+          <span class="tag tag-coral">Growing SMEs</span>
+          <span class="tag tag-coral">Monthly retainer</span>
+          <span class="tag tag-amber">CA-led</span>
+        </div>
+        <div class="svc-divider"></div>
+        <div class="outcome-label">What you get</div>
+        <div class="outcome-list">
+          <div class="outcome-item">Monthly MIS — P&amp;L, Cash Flow by the 5th</div>
+          <div class="outcome-item">Annual budget &amp; rolling quarterly forecasts</div>
+          <div class="outcome-item">Live Zoho Analytics dashboard, always current</div>
+          <div class="outcome-item">60-min monthly CA review call</div>
+        </div>
+        <div class="svc-footer">
+          <div class="price-txt">Starting from<strong>₹8,000 / month</strong></div>
+          <button class="btn-svc" onclick="showPage('contact')">Enquire Now</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT PAGE: About + Why EasyBridge -->
+<div class="page" id="page-about">
+  <div class="page-content">
+    <div class="about-page">
+
+      <!-- Left: Founder -->
+      <div class="about-founder">
+        <div class="section-label">About EasyBridge</div>
+        <h2 class="section-title" style="margin-bottom:16px">Founded by a CA.<br>Built for Everyone.</h2>
+        <div class="founder-avatar">P</div>
+        <div class="founder-role">Payal — Chartered Accountant &amp; Founder</div>
+        <p class="founder-bio">As a practicing CA at the intersection of finance, technology, and business advisory, I saw talented people held back by gatekeeping — and businesses struggling to find the right help.</p>
+        <p class="founder-bio">EasyBridge bridges both gaps: we train the skilled, implement the tools, connect the talent, and bring financial clarity to businesses that need it.</p>
+        <div class="founder-creds">
+          <div class="cred">Chartered Accountant (ICAI)</div>
+          <div class="cred">Zoho implementation specialist — 80+ SME deployments</div>
+          <div class="cred">India GST, TDS, Income Tax, MCA expert</div>
+          <div class="cred">AI tools adoption advocate for finance professionals</div>
+        </div>
+      </div>
+
+      <!-- Right: Values -->
+      <div>
+        <div class="section-label">Our Philosophy</div>
+        <h2 class="section-title" style="margin-bottom:24px">Why EasyBridge?</h2>
+        <div class="values-col">
+          <div class="value-card">
+            <div class="value-num">0<em>°</em></div>
+            <div class="value-info">
+              <h4>Age Barrier</h4>
+              <p>Learning has no expiry date. Every age, every background, every starting point is welcome here.</p>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-num">∞</div>
+            <div class="value-info">
+              <h4>Growth Paths</h4>
+              <p>From first-time student to CA to business owner — every stage of your journey, covered.</p>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-num">1<em>st</em></div>
+            <div class="value-info">
+              <h4>Skills Always First</h4>
+              <p>We value what you can do, not what paper says. A skilled person is valued everywhere.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- WHO WE SERVE PAGE: Audience tabs + Testimonials -->
+<div class="page" id="page-serve">
+  <div class="page-content">
+    <div class="serve-page">
+
+      <!-- Tabs section -->
+      <div>
+        <div class="section-label">Who We Serve</div>
+        <h2 class="section-title" style="margin-bottom:20px">Built for Everyone Who Wants to Grow</h2>
+        <div class="tabs">
+          <button class="tab-btn active" onclick="showPanel('students',this)">Students</button>
+          <button class="tab-btn" onclick="showPanel('professionals',this)">Professionals</button>
+          <button class="tab-btn" onclick="showPanel('business',this)">Business Owners</button>
+        </div>
+        <div id="panel-students" class="serve-panel active">
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>No prior degree needed</h4><p>Learn cloud accounting and AI tools from scratch — we start where you are.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Job-ready training</h4><p>Courses mapped to real employer demand for finance roles across India's SME sector.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Certificates that matter</h4><p>Practical skills employers actually look for — not theoretical degrees gathering dust.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Affordable access</h4><p>Pricing built for students, not corporations. Flexible payment options available.</p></div></div>
+        </div>
+        <div id="panel-professionals" class="serve-panel">
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>CA &amp; tax upskilling</h4><p>AI tools for GST, TDS, ITR, advance tax, and litigation — India-specific, not generic.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Cloud migration support</h4><p>Move from manual workflows to cloud without disrupting your client commitments.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Zoho &amp; ERP mastery</h4><p>Deep-dive training for finance teams on leading cloud platforms used across India.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Flexible schedules</h4><p>Weekend and evening batches designed around CA and professional workloads.</p></div></div>
+        </div>
+        <div id="panel-business" class="serve-panel">
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Full Zoho implementation</h4><p>Setup to migration to team training to go-live — end to end, no tech team required.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>FP&amp;A as a service</h4><p>Monthly financial analysis and dashboards without hiring a full-time CFO.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Skill-first recruitment</h4><p>We find people who can genuinely do the job — pre-screened, skill-verified candidates.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>SME-focused advisory</h4><p>Built for 5–100 person businesses in India — not scaled-down enterprise advice.</p></div></div>
+        </div>
+      </div>
+
+      <!-- Testimonials section -->
+      <div>
+        <div class="testi-hd">
+          <div class="section-label">Client Stories</div>
+          <h2 class="section-title">What Our Clients &amp; Learners Say</h2>
+        </div>
+        <div class="testi-grid">
+          <div class="testi">
+            <div class="quote-mark">"</div>
+            <p>I had no accounting degree but after EasyBridge's Zoho training, I landed a finance role within 3 months. Practical, India-focused, and nothing like the generic stuff online.</p>
+            <div class="testi-author"><div class="testi-name">Riya Sharma</div><div class="testi-role">Finance Executive, Ranchi</div></div>
+          </div>
+          <div class="testi">
+            <div class="quote-mark">"</div>
+            <p>EasyBridge implemented Zoho Books and CRM for our business in 10 weeks. Our invoicing time dropped 70% and we have GST-ready reports at a click.</p>
+            <div class="testi-author"><div class="testi-name">Arun Poddar</div><div class="testi-role">MD, HEH Electricals, Ranchi</div></div>
+          </div>
+          <div class="testi">
+            <div class="quote-mark">"</div>
+            <p>The AI tools training is exactly what CAs in 2026 need. Practical, India-specific, no fluff. I've used the prompt templates with real clients from day one.</p>
+            <div class="testi-author"><div class="testi-name">CA Priya Nair</div><div class="testi-role">Chartered Accountant, Mumbai</div></div>
+          </div>
+          <div class="testi">
+            <div class="quote-mark">"</div>
+            <p>At 48, I thought I was too old to learn new software. EasyBridge proved me wrong. The FP&amp;A service transformed how I understand my business numbers.</p>
+            <div class="testi-author"><div class="testi-name">Suresh Mehta</div><div class="testi-role">Small Business Owner, Jaipur</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div class="page" id="page-contact">
+  <div class="page-content">
+    <div class="page-hd">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Bridge Your Gap.</h2>
+      <p class="section-sub">Tell us what you need — training, implementation, recruitment, or FP&amp;A. We'll respond within one business day.</p>
+    </div>
+    <div class="contact-page">
+      <div class="contact-left">
+        <h2>How can we help?</h2>
+        <p>Whether you're a student, a CA, or a business owner — Payal will personally respond to every enquiry.</p>
+        <div class="contact-ways">
+          <div class="contact-way">
+            <div class="way-icon">📧</div>
+            <div><div class="way-label">Email</div><div class="way-val"><a href="mailto:hello@easybridge.in">hello@easybridge.in</a></div></div>
+          </div>
+          <div class="contact-way">
+            <div class="way-icon">💬</div>
+            <div><div class="way-label">WhatsApp</div><div class="way-val"><a href="#">+91 XXXXX XXXXX</a> · Mon–Sat 10am–7pm</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <div id="contact-form-body">
+          <h3 class="form-title">Send us a message</h3>
+          <p class="form-sub">Payal will personally review and respond to your enquiry.</p>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="Riya"/></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="riya@example.com"/></div>
+          <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+91 98XXX XXXXX"/></div>
+          <div class="form-group">
+            <label>I am a...</label>
+            <select>
+              <option value="">Select your role</option>
+              <option>Student (no prior experience)</option>
+              <option>Working professional</option>
+              <option>Chartered Accountant / Tax professional</option>
+              <option>Business owner / SME</option>
+              <option>Corporate / Institution</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>I'm interested in</label>
+            <div class="form-services">
+              <label class="fs-opt"><input type="checkbox"/> ☁️ Cloud Training</label>
+              <label class="fs-opt"><input type="checkbox"/> 🤖 AI Tools Training</label>
+              <label class="fs-opt"><input type="checkbox"/> ⚙️ Implementation</label>
+              <label class="fs-opt"><input type="checkbox"/> 🔍 Recruitment</label>
+              <label class="fs-opt"><input type="checkbox"/> 📊 FP&amp;A Service</label>
+              <label class="fs-opt"><input type="checkbox"/> 🎯 Custom Package</label>
+            </div>
+          </div>
+          <div class="form-group"><label>Tell us more (optional)</label><textarea placeholder="E.g. I run a 20-person trading firm and want to implement Zoho Books..."></textarea></div>
+          <button class="form-submit" onclick="submitForm(event)">Send Message →</button>
+        </div>
+        <div class="form-success" id="form-success">
+          <div class="success-icon">🎉</div>
+          <h3>Message received!</h3>
+          <p>Thank you for reaching out. Payal will personally review your message and reply within one business day.<br><br><strong>Skills over degrees. Growth has no age.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo" onclick="showPage('home');return false">
+        <svg width="32" height="32" viewBox="0 0 38 38"><circle cx="4" cy="28" r="3.5" fill="#0D6E6E" opacity="0.4"/><circle cx="11" cy="21" r="4.5" fill="#0D6E6E" opacity="0.65"/><circle cx="19" cy="16" r="6" fill="#5DCAA5"/><circle cx="27" cy="21" r="4.5" fill="#F5A623" opacity="0.75"/><circle cx="34" cy="28" r="3.5" fill="#F5A623" opacity="0.45"/><path d="M4 28 Q11.5 13 19 16 Q26.5 19 34 28" fill="none" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="3,2.5" opacity="0.55"/></svg>
+        <span class="logo-text" style="color:#E1F5F0">Easy<span>Bridge</span></span>
+      </a>
+      <p>Empowering learners and businesses across India through practical skills, smart tools, and no-barrier growth.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a onclick="showPage('services')">Cloud Tools Training</a>
+      <a onclick="showPage('services')">AI Tools for Finance</a>
+      <a onclick="showPage('services')">Business Implementation</a>
+      <a onclick="showPage('services')">Skill-First Recruitment</a>
+      <a onclick="showPage('services')">FP&amp;A In-House</a>
+    </div>
+    <div class="footer-col">
+      <h4>Who We Serve</h4>
+      <a onclick="showPage('serve')">Students</a>
+      <a onclick="showPage('serve')">Professionals &amp; CAs</a>
+      <a onclick="showPage('serve')">Business Owners</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a onclick="showPage('about')">About Payal</a>
+      <a onclick="showPage('about')">Our Philosophy</a>
+      <a onclick="showPage('contact')">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 EasyBridge · All rights reserved · GST Invoice provided</div>
+    <div class="footer-tagline">Skills Over Degrees. Growth Has No Age.</div>
+  </div>
+</footer>
+
+<div style="position:fixed;bottom:14px;right:14px;background:#0A1628;color:white;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;z-index:999;font-family:Inter,sans-serif;pointer-events:none">Template 1 · Clarity</div>
+
+<script>
+function showPage(id){window.location.hash=id}
+function _renderPage(id){
+  const valid=['home','services','about','serve','contact'];
+  const p=valid.includes(id)?id:'home';
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  const t=document.getElementById('page-'+p);
+  if(t)t.classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.dataset.page===p));
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',()=>_renderPage(window.location.hash.slice(1)||'home'));
+window.addEventListener('DOMContentLoaded',()=>_renderPage(window.location.hash.slice(1)||'home'));
+function filterSvc(aud,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.svc-card').forEach(card=>{
+    if(aud==='all'){card.style.display='';return}
+    const a=(card.dataset.aud||'').split(' ');
+    card.style.display=a.includes(aud)?'':'none';
+  });
+}
+function showPanel(id,btn){
+  document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.serve-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+id).classList.add('active');
+}
+function submitForm(e){
+  e.preventDefault();
+  document.getElementById('contact-form-body').style.display='none';
+  document.getElementById('form-success').style.display='block';
+}
+</script>
+</body>
+</html>

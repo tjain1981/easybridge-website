@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EasyBridge — Edge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════
+   TEMPLATE 2 — EDGE
+   Bold · Dark · Tech-forward
+   Uses PRICING instead of Services section
+═══════════════════════════════════ */
+:root{
+  --teal:#0D6E6E; --teal2:#1A9B9B; --teal-glow:rgba(13,110,110,0.2);
+  --amber:#F5A623; --amber-d:#F0861A;
+  --navy:#07111F; --navy2:#0D1B2E; --navy3:#112038;
+  --text:#E8F0FE; --muted:#94A3B8;
+  --border:#1E3050; --surface:#0F1E32;
+  --glass:rgba(255,255,255,0.04); --glass-b:rgba(255,255,255,0.08);
+  --white:#fff;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--navy);min-height:100vh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ── */
+nav{
+  flex-shrink:0;position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:66px;
+  background:rgba(7,17,31,0.92);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-text{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:white}
+.logo-text span{color:var(--amber)}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-link{
+  font-size:14px;font-weight:500;color:var(--muted);
+  padding:7px 16px;border-radius:8px;cursor:pointer;
+  border:none;background:none;font-family:'DM Sans',sans-serif;
+  transition:all 0.2s;
+}
+.nav-link:hover{color:var(--teal2);background:var(--glass)}
+.nav-link.active{color:var(--teal2);font-weight:600;background:rgba(13,110,110,0.12)}
+.nav-cta{
+  background:var(--teal);color:white;
+  padding:9px 22px;border-radius:10px;
+  font-size:14px;font-weight:600;
+  border:none;font-family:'DM Sans',sans-serif;cursor:pointer;
+  box-shadow:0 0 20px var(--teal-glow);transition:all 0.2s;
+}
+.nav-cta:hover{background:var(--teal2)}
+
+/* ── PAGES ── */
+main{flex:1}
+.page{display:none}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.page.active{animation:fadeIn 0.25s ease}
+
+/* ── HOME ── */
+.home-wrap{
+  min-height:calc(100vh - 66px);
+  background:var(--navy);
+  display:flex;align-items:center;
+  padding:72px 48px;
+  position:relative;overflow:hidden;
+}
+.glow1{position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(13,110,110,0.1) 0%,transparent 65%);pointer-events:none}
+.glow2{position:absolute;bottom:-180px;left:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(245,166,35,0.06) 0%,transparent 65%);pointer-events:none}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(30,48,80,0.25) 1px,transparent 1px),linear-gradient(90deg,rgba(30,48,80,0.25) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.home-inner{
+  position:relative;max-width:1040px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 300px;gap:80px;align-items:center;
+}
+.home-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(13,110,110,0.4);background:rgba(13,110,110,0.1);
+  color:var(--teal2);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:6px 16px;border-radius:20px;margin-bottom:24px;
+}
+.home-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(40px,5vw,64px);font-weight:900;
+  line-height:1.05;color:white;margin-bottom:22px;max-width:640px;
+}
+.home-h1 em{
+  background:linear-gradient(135deg,var(--teal2),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-style:normal;
+}
+.home-desc{color:var(--muted);font-size:17px;line-height:1.8;max-width:520px;margin-bottom:36px}
+.home-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.btn-primary{
+  background:linear-gradient(135deg,var(--teal),var(--teal2));color:white;
+  padding:14px 32px;border-radius:12px;font-size:15px;font-weight:700;
+  border:none;font-family:'DM Sans',sans-serif;cursor:pointer;
+  box-shadow:0 4px 20px var(--teal-glow);transition:all 0.2s;display:inline-block;
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 32px var(--teal-glow)}
+.btn-ghost{
+  background:var(--glass);color:white;
+  border:1px solid var(--glass-b);
+  padding:13px 32px;border-radius:12px;
+  font-size:15px;font-weight:500;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+  transition:all 0.2s;display:inline-block;backdrop-filter:blur(8px);
+}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal2)}
+.home-badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{
+  display:flex;align-items:center;gap:6px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  padding:7px 14px;border-radius:8px;
+  font-size:12px;font-weight:500;color:var(--muted);backdrop-filter:blur(6px);
+}
+
+/* Stat panel */
+.stat-panel{
+  border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  background:var(--surface);
+}
+.stat-item{
+  padding:18px 24px;border-bottom:1px solid var(--border);
+  display:flex;gap:16px;align-items:center;
+}
+.stat-item:last-child{border-bottom:none}
+.stat-icon{font-size:20px;flex-shrink:0}
+.stat-val{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:white;line-height:1}
+.stat-val em{color:var(--amber);font-style:normal;font-size:16px}
+.stat-lbl{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* ── SHARED PAGE LAYOUT ── */
+.page-content{max-width:1040px;margin:0 auto;padding:52px 48px}
+.page-hd{margin-bottom:40px}
+.section-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal2);margin-bottom:8px}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,3vw,36px);font-weight:700;color:white;line-height:1.15;margin-bottom:8px;
+}
+.section-sub{font-size:15px;color:var(--muted);line-height:1.7;max-width:540px}
+
+/* ── PRICING PAGE ── */
+.pricing-intro{margin-bottom:36px}
+.pricing-toggle{display:flex;align-items:center;gap:12px;margin-bottom:36px}
+.toggle-label{font-size:14px;font-weight:600;color:var(--muted);transition:color 0.2s}
+.toggle-label.active{color:var(--teal2)}
+.toggle-switch{position:relative;width:48px;height:26px;cursor:pointer}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-track{position:absolute;inset:0;background:#1E3050;border-radius:13px;transition:background 0.2s}
+.toggle-thumb{position:absolute;width:20px;height:20px;background:white;border-radius:50%;top:3px;left:3px;transition:transform 0.2s}
+.toggle-switch input:checked + .toggle-track{background:var(--teal)}
+.toggle-switch input:checked ~ .toggle-thumb{transform:translateX(22px)}
+.save-badge{background:rgba(245,166,35,0.2);color:var(--amber);font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;border:1px solid rgba(245,166,35,0.3)}
+
+/* Training cards */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.price-card{
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:16px;padding:26px;position:relative;transition:all 0.2s;
+}
+.price-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+.price-card.feat{border-color:var(--teal);background:rgba(13,110,110,0.1)}
+.feat-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(90deg,var(--teal),var(--teal2));
+  color:white;font-size:11px;font-weight:700;
+  padding:4px 14px;border-radius:20px;white-space:nowrap;
+}
+.pc-icon{font-size:26px;margin-bottom:12px;display:block}
+.price-card h3{font-size:16px;font-weight:600;color:white;margin-bottom:6px}
+.price-card > p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.pc-price{
+  font-family:'Playfair Display',serif;font-size:38px;font-weight:700;line-height:1;
+  background:linear-gradient(135deg,#5DCAA5,var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:4px;
+}
+.pc-period{font-size:12px;color:var(--muted);margin-bottom:18px}
+.pc-features{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.pf{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text)}
+.pf.yes::before{content:'✓';color:var(--teal2);font-weight:700;flex-shrink:0}
+.pf.no{color:var(--muted);opacity:0.5}
+.pf.no::before{content:'✗';color:var(--border);font-weight:700;flex-shrink:0}
+.btn-price{
+  display:block;width:100%;padding:12px;border-radius:10px;text-align:center;
+  font-size:13px;font-weight:700;cursor:pointer;border:none;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;
+}
+.btn-filled{background:linear-gradient(135deg,var(--teal),var(--teal2));color:white;box-shadow:0 4px 16px var(--teal-glow)}
+.btn-filled:hover{transform:translateY(-1px)}
+.btn-outline-p{background:transparent;color:var(--teal2);border:1px solid var(--teal)}
+.btn-outline-p:hover{background:rgba(13,110,110,0.1)}
+
+/* Business pricing wide cards */
+.biz-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.biz-card{
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:14px;padding:22px;
+  display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;
+  transition:border-color 0.2s;
+}
+.biz-card:hover{border-color:var(--teal)}
+.biz-icon{font-size:22px;margin-bottom:8px;display:block}
+.biz-card h3{font-size:15px;font-weight:600;color:white;margin-bottom:5px}
+.biz-card > div > p{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+.biz-features{display:flex;flex-direction:column;gap:5px}
+.bf{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--muted)}
+.bf::before{content:'→';color:var(--teal2);flex-shrink:0;font-size:11px;margin-top:1px}
+.biz-right{text-align:right}
+.biz-note{font-size:10px;color:var(--muted);margin-bottom:3px}
+.biz-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--teal2);line-height:1}
+.biz-period{font-size:11px;color:var(--muted);margin-bottom:12px}
+.btn-biz{
+  display:inline-block;background:var(--teal);color:white;
+  padding:8px 16px;border-radius:8px;font-size:12px;font-weight:700;
+  border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;
+  white-space:nowrap;
+}
+.btn-biz:hover{background:var(--teal2)}
+
+/* FAQ */
+.faq-grid{display:flex;flex-direction:column;gap:10px;margin-top:40px}
+.faq-item{background:var(--glass);border:1px solid var(--glass-b);border-radius:12px;overflow:hidden}
+.faq-q{
+  padding:14px 18px;font-size:14px;font-weight:600;color:white;
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+  user-select:none;
+}
+.faq-chevron{color:var(--teal2);transition:transform 0.2s;font-size:14px}
+.faq-a{display:none;padding:0 18px 14px;font-size:13px;color:var(--muted);line-height:1.7}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+
+/* ── ABOUT PAGE ── */
+.about-page{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.founder-avatar{
+  width:150px;height:150px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(13,110,110,0.3),rgba(13,110,110,0.1));
+  border:1px solid rgba(13,110,110,0.4);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:60px;font-weight:700;
+  color:var(--teal2);margin-bottom:16px;
+  box-shadow:0 0 40px rgba(13,110,110,0.08);
+}
+.founder-role{font-size:12px;font-weight:600;color:var(--teal2);margin-bottom:12px}
+.founder-bio{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:14px}
+.founder-creds{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.cred{
+  display:flex;align-items:flex-start;gap:9px;
+  font-size:12px;color:rgba(232,240,254,0.7);
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:8px;padding:8px 12px;
+}
+.cred::before{content:'◆';color:var(--teal2);font-size:8px;flex-shrink:0;margin-top:2px}
+.about-pull{
+  background:linear-gradient(135deg,rgba(13,110,110,0.15),rgba(245,166,35,0.05));
+  border:1px solid rgba(13,110,110,0.2);border-radius:12px;padding:18px 20px;margin-top:20px;
+}
+.about-pull p{font-size:14px;color:white;font-style:italic;line-height:1.7}
+.about-pull span{color:var(--teal2);font-weight:600;font-style:normal}
+/* Values */
+.values-col{display:flex;flex-direction:column;gap:14px}
+.value-card{
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:14px;padding:20px;display:flex;gap:16px;align-items:flex-start;
+  position:relative;overflow:hidden;transition:border-color 0.2s;
+}
+.value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--amber))}
+.value-card:hover{border-color:var(--teal)}
+.value-num{
+  font-family:'Playfair Display',serif;
+  background:linear-gradient(135deg,var(--teal2),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-size:38px;font-weight:700;line-height:1;flex-shrink:0;
+}
+.value-info h4{font-size:14px;font-weight:600;color:white;margin-bottom:5px}
+.value-info p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── WHO WE SERVE PAGE ── */
+.serve-page{display:flex;flex-direction:column;gap:44px}
+.tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.tab-btn{
+  padding:9px 20px;border-radius:24px;font-size:13px;font-weight:600;
+  cursor:pointer;border:1px solid var(--border);
+  background:transparent;color:var(--muted);
+  transition:all 0.2s;font-family:'DM Sans',sans-serif;
+}
+.tab-btn.active{background:var(--teal);color:white;border-color:var(--teal);box-shadow:0 0 16px var(--teal-glow)}
+.serve-panel{display:none}
+.serve-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.serve-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:16px;background:var(--glass);border-radius:12px;border:1px solid var(--glass-b);
+  transition:border-color 0.2s;
+}
+.serve-item:hover{border-color:var(--teal)}
+.serve-dot{width:7px;height:7px;min-width:7px;border-radius:50%;background:var(--amber);margin-top:4px;flex-shrink:0;box-shadow:0 0 6px rgba(245,166,35,0.4)}
+.serve-item h4{font-size:13px;font-weight:600;color:white;margin-bottom:3px}
+.serve-item p{font-size:12px;color:var(--muted);line-height:1.5}
+.testi-hd{margin-bottom:20px}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.testi{
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:14px;padding:22px;position:relative;transition:border-color 0.2s;
+}
+.testi:hover{border-color:var(--teal)}
+.quote-mark{font-family:'Playfair Display',serif;font-size:48px;color:rgba(13,110,110,0.2);position:absolute;top:6px;right:14px;line-height:1;pointer-events:none}
+.stars{display:flex;gap:2px;margin-bottom:10px}
+.star{color:var(--amber);font-size:12px}
+.testi p{font-size:13px;line-height:1.75;font-style:italic;color:rgba(232,240,254,0.85);margin-bottom:14px}
+.testi-name{font-size:13px;font-weight:700;color:var(--teal2)}
+.testi-role{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* ── CONTACT PAGE ── */
+.contact-page{display:grid;grid-template-columns:1fr 1.5fr;gap:56px;align-items:start}
+.contact-left h2{font-family:'Playfair Display',serif;font-size:26px;color:white;margin-bottom:10px}
+.contact-left p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:24px}
+.contact-ways{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.contact-way{
+  display:flex;gap:14px;padding:14px;
+  background:var(--glass);border:1px solid var(--glass-b);border-radius:12px;transition:border-color 0.2s;
+}
+.contact-way:hover{border-color:var(--teal)}
+.way-icon{font-size:18px;flex-shrink:0}
+.way-label{font-size:12px;font-weight:600;color:white;margin-bottom:2px}
+.way-val{font-size:13px;color:var(--muted)}
+.way-val a{color:var(--teal2);font-weight:500}
+.contact-form-wrap{background:var(--glass);border:1px solid var(--glass-b);border-radius:20px;padding:30px;backdrop-filter:blur(8px)}
+.form-title{font-size:18px;font-weight:700;color:white;margin-bottom:4px}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:22px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.form-group label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.form-group input,.form-group select,.form-group textarea{
+  padding:10px 12px;border:1px solid var(--border);border-radius:10px;
+  font-size:13px;font-family:'DM Sans',sans-serif;color:white;
+  outline:none;transition:border-color 0.2s;background:rgba(255,255,255,0.04);
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group select option{background:var(--navy2)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-services{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px}
+.fs-opt{
+  display:flex;align-items:center;gap:7px;padding:8px 10px;
+  border:1px solid var(--border);border-radius:8px;cursor:pointer;
+  font-size:12px;transition:all 0.2s;color:var(--muted);
+}
+.fs-opt input{accent-color:var(--teal)}
+.fs-opt:has(input:checked){background:rgba(13,110,110,0.15);border-color:var(--teal);color:var(--teal2);font-weight:600}
+.form-submit{
+  width:100%;padding:12px;border-radius:12px;
+  background:linear-gradient(135deg,var(--teal),var(--teal2));
+  color:white;font-size:14px;font-weight:700;border:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;box-shadow:0 4px 20px var(--teal-glow);
+}
+.form-submit:hover{transform:translateY(-1px)}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.success-icon{font-size:44px;margin-bottom:14px}
+.form-success h3{font-family:'Playfair Display',serif;font-size:20px;color:white;margin-bottom:8px}
+.form-success p{font-size:14px;color:var(--muted)}
+
+/* ── FOOTER ── */
+footer{background:var(--surface);border-top:2px solid rgba(13,110,110,0.4);padding:48px 48px 22px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;max-width:1040px;margin:0 auto;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:20px}
+.footer-brand p{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;margin-top:12px;max-width:220px}
+.footer-col h4{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.footer-col a{display:block;font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:8px;transition:color 0.15s;cursor:pointer}
+.footer-col a:hover{color:white}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;max-width:1040px;margin:0 auto}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.38)}
+.footer-tagline{font-size:11px;color:var(--amber);font-style:italic}
+
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .home-inner{grid-template-columns:1fr}
+  .stat-panel{display:none}
+  .page-content{padding:40px 20px}
+  .price-grid,.biz-grid,.about-page,.contact-page{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .serve-panel.active{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .home-wrap{padding:56px 20px}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo" onclick="showPage('home');return false">
+    <svg width="34" height="34" viewBox="0 0 38 38"><circle cx="4" cy="28" r="3.5" fill="#0D6E6E" opacity="0.4"/><circle cx="11" cy="21" r="4.5" fill="#0D6E6E" opacity="0.7"/><circle cx="19" cy="16" r="6" fill="#1A9B9B"/><circle cx="27" cy="21" r="4.5" fill="#F5A623" opacity="0.85"/><circle cx="34" cy="28" r="3.5" fill="#F5A623" opacity="0.5"/><path d="M4 28 Q11.5 13 19 16 Q26.5 19 34 28" fill="none" stroke="#1A9B9B" stroke-width="1.5" stroke-dasharray="3,2.5" opacity="0.5"/></svg>
+    <span class="logo-text">Easy<span>Bridge</span></span>
+  </a>
+  <div class="nav-links">
+    <button class="nav-link active" data-page="home" onclick="showPage('home')">Home</button>
+    <button class="nav-link" data-page="pricing" onclick="showPage('pricing')">Pricing</button>
+    <button class="nav-link" data-page="about" onclick="showPage('about')">About</button>
+    <button class="nav-link" data-page="serve" onclick="showPage('serve')">Who We Serve</button>
+    <button class="nav-cta" onclick="showPage('contact')">Get Started</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="home-wrap">
+    <div class="glow1"></div><div class="glow2"></div><div class="grid-bg"></div>
+    <div class="home-inner">
+      <div>
+        <div class="home-tag">Skills · Growth · No Barriers · India-Focused</div>
+        <h1 class="home-h1">No Degree. No Age Limit.<br><em>Just Skills.</em></h1>
+        <p class="home-desc">EasyBridge empowers students, professionals, and businesses with cloud tool training, AI upskilling, business implementation, recruitment, and FP&amp;A — built for India.</p>
+        <div class="home-btns">
+          <button class="btn-primary" onclick="showPage('pricing')">View Pricing</button>
+          <button class="btn-ghost" onclick="showPage('contact')">Talk to Us →</button>
+        </div>
+        <div class="home-badges">
+          <span class="badge">🎓 No degree required</span>
+          <span class="badge">🌱 Any age, any stage</span>
+          <span class="badge">🇮🇳 India-focused</span>
+          <span class="badge">⚡ CA-led advisory</span>
+        </div>
+      </div>
+      <div class="stat-panel">
+        <div class="stat-item"><div class="stat-icon">🎓</div><div><div class="stat-val">500<em>+</em></div><div class="stat-lbl">Professionals trained</div></div></div>
+        <div class="stat-item"><div class="stat-icon">🏢</div><div><div class="stat-val">80<em>+</em></div><div class="stat-lbl">SMEs served</div></div></div>
+        <div class="stat-item"><div class="stat-icon">⚙️</div><div><div class="stat-val">5</div><div class="stat-lbl">Service streams</div></div></div>
+        <div class="stat-item"><div class="stat-icon">🏅</div><div><div class="stat-val">CA<em>-led</em></div><div class="stat-lbl">Expert advisory</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING PAGE (replaces Services in this template) -->
+<div class="page" id="page-pricing">
+  <div class="page-content">
+    <div class="page-hd">
+      <div class="section-label">Transparent Pricing</div>
+      <h2 class="section-title">Simple, Honest Pricing. No Hidden Fees.</h2>
+      <p class="section-sub">Every service priced fairly for India's SME and professional market. GST invoice provided for all services.</p>
+    </div>
+
+    <div class="pricing-intro">
+      <div class="section-label" style="margin-bottom:8px">Training Programmes</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:white;margin-bottom:12px">Cloud &amp; AI Skills Training</h3>
+    </div>
+
+    <div class="pricing-toggle">
+      <span class="toggle-label active" id="lbl-per">Per Course</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="billing-toggle" onchange="toggleBilling()"/>
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </label>
+      <span class="toggle-label" id="lbl-bundle">Bundle &nbsp;<span class="save-badge">Save 20%</span></span>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <span class="pc-icon">☁️</span>
+        <h3>Cloud Tools — Starter</h3>
+        <p>One platform of your choice. Perfect for beginners learning Zoho, Tally, or Excel.</p>
+        <div class="pc-price" data-monthly="₹2,999" data-annual="₹2,399">₹2,999</div>
+        <div class="pc-period" data-monthly="One-time · Single platform" data-annual="One-time · 20% off">One-time · Single platform</div>
+        <div class="pc-features">
+          <div class="pf yes">One platform of your choice</div>
+          <div class="pf yes">Recorded sessions + notes</div>
+          <div class="pf yes">Practice datasets included</div>
+          <div class="pf yes">EasyBridge certificate</div>
+          <div class="pf no">Live batch access</div>
+          <div class="pf no">WhatsApp doubt support</div>
+        </div>
+        <button class="btn-price btn-outline-p" onclick="showPage('contact')">Enquire Now</button>
+      </div>
+      <div class="price-card feat">
+        <div class="feat-badge">Most Popular</div>
+        <span class="pc-icon">🚀</span>
+        <h3>Cloud Tools — Pro</h3>
+        <p>All platforms, live batches, and 90-day support. Best for job seekers and professionals.</p>
+        <div class="pc-price" data-monthly="₹7,999" data-annual="₹6,399">₹7,999</div>
+        <div class="pc-period" data-monthly="One-time · All platforms" data-annual="One-time · 20% off">One-time · All platforms</div>
+        <div class="pc-features">
+          <div class="pf yes">All platforms (Zoho, Tally, QBO, Excel)</div>
+          <div class="pf yes">Live batch + recordings</div>
+          <div class="pf yes">GST &amp; TDS integrated throughout</div>
+          <div class="pf yes">EasyBridge certificate</div>
+          <div class="pf yes">WhatsApp doubt support (90 days)</div>
+          <div class="pf yes">Job referral network access</div>
+        </div>
+        <button class="btn-price btn-filled" onclick="showPage('contact')">Enquire Now →</button>
+      </div>
+      <div class="price-card">
+        <span class="pc-icon">🤖</span>
+        <h3>AI Tools for Finance</h3>
+        <p>Practical AI upskilling for CAs and tax professionals. CPE-eligible for ICAI members.</p>
+        <div class="pc-price" data-monthly="₹3,999" data-annual="₹3,199">₹3,999</div>
+        <div class="pc-period" data-monthly="Per workshop · 2 days" data-annual="Per workshop · 20% off">Per workshop · 2 days</div>
+        <div class="pc-features">
+          <div class="pf yes">Tax, GST, litigation, accounting</div>
+          <div class="pf yes">50+ prompt template library</div>
+          <div class="pf yes">India-law grounded content</div>
+          <div class="pf yes">CPE credit eligible (ICAI)</div>
+          <div class="pf yes">Certificate of completion</div>
+          <div class="pf no">Custom corporate sessions</div>
+        </div>
+        <button class="btn-price btn-outline-p" onclick="showPage('contact')">Enquire Now</button>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-bottom:8px">Business Services</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:white;margin-bottom:20px">For Business Owners &amp; SMEs</h3>
+    <div class="biz-grid">
+      <div class="biz-card">
+        <div>
+          <span class="biz-icon">⚙️</span>
+          <h3>Business Implementation</h3>
+          <p>Full Zoho One setup, data migration, automation, and team training — end to end.</p>
+          <div class="biz-features">
+            <div class="bf">Scoping report before commitment</div>
+            <div class="bf">Phased delivery with milestones</div>
+            <div class="bf">90-day post go-live support</div>
+            <div class="bf">India GST &amp; TDS pre-configured</div>
+          </div>
+        </div>
+        <div class="biz-right">
+          <div class="biz-note">Starting from</div>
+          <div class="biz-price">₹45,000</div>
+          <div class="biz-period">per project</div>
+          <button class="btn-biz" onclick="showPage('contact')">Enquire Now →</button>
+        </div>
+      </div>
+      <div class="biz-card">
+        <div>
+          <span class="biz-icon">📊</span>
+          <h3>FP&amp;A In-House</h3>
+          <p>Monthly MIS, budgeting, live dashboard, and CA review call — your outsourced CFO function.</p>
+          <div class="biz-features">
+            <div class="bf">Monthly MIS by the 5th</div>
+            <div class="bf">Annual budget &amp; quarterly forecasts</div>
+            <div class="bf">Live Zoho Analytics dashboard</div>
+            <div class="bf">60-min monthly CA review call</div>
+          </div>
+        </div>
+        <div class="biz-right">
+          <div class="biz-note">Starting from</div>
+          <div class="biz-price">₹8,000</div>
+          <div class="biz-period">per month</div>
+          <button class="btn-biz" onclick="showPage('contact')">Enquire Now →</button>
+        </div>
+      </div>
+      <div class="biz-card">
+        <div>
+          <span class="biz-icon">🔍</span>
+          <h3>Skill-First Recruitment</h3>
+          <p>Right-fit hiring with practical skills screening. 30-day free replacement guarantee.</p>
+          <div class="biz-features">
+            <div class="bf">Role scoping &amp; real JD creation</div>
+            <div class="bf">Practical skills assessment</div>
+            <div class="bf">3–5 shortlisted candidates</div>
+            <div class="bf">30-day replacement guarantee</div>
+          </div>
+        </div>
+        <div class="biz-right">
+          <div class="biz-note">Success fee</div>
+          <div class="biz-price" style="font-size:18px">8–12%</div>
+          <div class="biz-period">of annual CTC</div>
+          <button class="btn-biz" onclick="showPage('contact')">Enquire Now →</button>
+        </div>
+      </div>
+      <div class="biz-card" style="border-color:rgba(13,110,110,0.3);background:rgba(13,110,110,0.06)">
+        <div>
+          <span class="biz-icon">🎯</span>
+          <h3>Custom / Corporate</h3>
+          <p>Group training for 10–500 employees, multi-service bundles, or bespoke packages for companies and institutions.</p>
+          <div class="biz-features">
+            <div class="bf">Custom curriculum &amp; branding</div>
+            <div class="bf">Multi-service bundles, reduced rates</div>
+            <div class="bf">Dedicated account management</div>
+          </div>
+        </div>
+        <div class="biz-right">
+          <div class="biz-note">Let's talk</div>
+          <div class="biz-price" style="font-size:16px">Custom<br>Quote</div>
+          <div class="biz-period">based on scope</div>
+          <button class="btn-biz" onclick="showPage('contact')">Contact Us →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-grid">
+      <div style="margin-top:8px"><div class="section-label">FAQ</div><h3 style="font-family:'Playfair Display',serif;font-size:22px;color:white;margin-bottom:20px">Pricing Questions Answered</h3></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a free trial? <span class="faq-chevron">▾</span></div><div class="faq-a">We offer a free 30-minute consultation call for all business services. For training, we provide a sample module preview before enrolment.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are EMI / instalment options available? <span class="faq-chevron">▾</span></div><div class="faq-a">Yes. For courses above ₹5,000 and implementation projects, we offer 2–3 instalment options. Contact us to discuss a plan that works for you.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you provide GST invoices? <span class="faq-chevron">▾</span></div><div class="faq-a">Absolutely. All services are invoiced with a valid GST number. Input tax credit is available for business clients where applicable.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bundle multiple services? <span class="faq-chevron">▾</span></div><div class="faq-a">Yes — bundling is encouraged. Clients who take 2 or more services receive a 10–15% package discount. Contact us for a custom bundle quote.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div class="page" id="page-about">
+  <div class="page-content">
+    <div class="about-page">
+      <div>
+        <div class="section-label">About EasyBridge</div>
+        <h2 class="section-title" style="margin-bottom:16px">Founded by a CA.<br>Built for Everyone.</h2>
+        <div class="founder-avatar">P</div>
+        <div class="founder-role">Payal — Chartered Accountant &amp; Founder</div>
+        <p class="founder-bio">As a practicing CA at the intersection of finance, technology, and business advisory, I saw talented people held back by gatekeeping — and businesses struggling to find the right help.</p>
+        <p class="founder-bio">EasyBridge bridges both gaps: we train the skilled, implement the tools, connect the talent, and bring financial clarity to businesses that need it.</p>
+        <div class="founder-creds">
+          <div class="cred">Chartered Accountant (ICAI)</div>
+          <div class="cred">Zoho implementation specialist — 80+ SME deployments</div>
+          <div class="cred">India GST, TDS, Income Tax, MCA expert</div>
+          <div class="cred">AI tools adoption advocate for finance professionals</div>
+        </div>
+        <div class="about-pull">
+          <p>"A skilled person is valued everywhere. <span>Age doesn't matter. A degree is not a prerequisite for growth.</span>"</p>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Our Philosophy</div>
+        <h2 class="section-title" style="margin-bottom:24px">Why EasyBridge?</h2>
+        <div class="values-col">
+          <div class="value-card">
+            <div class="value-num">0°</div>
+            <div class="value-info"><h4>Age Barrier</h4><p>Learning has no expiry date. Every age, every background, every starting point is welcome here.</p></div>
+          </div>
+          <div class="value-card">
+            <div class="value-num">∞</div>
+            <div class="value-info"><h4>Growth Paths</h4><p>From first-time student to CA to business owner — every stage of your journey, covered.</p></div>
+          </div>
+          <div class="value-card">
+            <div class="value-num">1st</div>
+            <div class="value-info"><h4>Skills Always First</h4><p>We value what you can do, not what paper says. A skilled person is valued everywhere.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO WE SERVE PAGE -->
+<div class="page" id="page-serve">
+  <div class="page-content">
+    <div class="serve-page">
+      <div>
+        <div class="section-label">Who We Serve</div>
+        <h2 class="section-title" style="margin-bottom:20px">Built for Everyone Who Wants to Grow</h2>
+        <div class="tabs">
+          <button class="tab-btn active" onclick="showPanel('students',this)">Students</button>
+          <button class="tab-btn" onclick="showPanel('professionals',this)">Professionals</button>
+          <button class="tab-btn" onclick="showPanel('business',this)">Business Owners</button>
+        </div>
+        <div id="panel-students" class="serve-panel active">
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>No prior degree needed</h4><p>Learn cloud accounting and AI tools from scratch — we start where you are.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Job-ready training</h4><p>Courses mapped to real employer demand for finance roles across India's SME sector.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Certificates that matter</h4><p>Practical skills employers actually look for — not theoretical degrees gathering dust.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Affordable access</h4><p>Pricing built for students, not corporations. Flexible payment options available.</p></div></div>
+        </div>
+        <div id="panel-professionals" class="serve-panel">
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>CA &amp; tax upskilling</h4><p>AI tools for GST, TDS, ITR, advance tax, and litigation — India-specific, not generic.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Cloud migration support</h4><p>Move from manual workflows to cloud without disrupting your client commitments.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Zoho &amp; ERP mastery</h4><p>Deep-dive training on leading cloud platforms used across India.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Flexible schedules</h4><p>Weekend and evening batches designed around CA and professional workloads.</p></div></div>
+        </div>
+        <div id="panel-business" class="serve-panel">
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Full Zoho implementation</h4><p>Setup to migration to team training to go-live — end to end, no tech team required.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>FP&amp;A as a service</h4><p>Monthly financial analysis and dashboards without hiring a full-time CFO.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>Skill-first recruitment</h4><p>Pre-screened, skill-verified candidates — people who can genuinely do the job.</p></div></div>
+          <div class="serve-item"><div class="serve-dot"></div><div><h4>SME-focused advisory</h4><p>Built for 5–100 person businesses in India — not scaled-down enterprise advice.</p></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="testi-hd">
+          <div class="section-label">Client Stories</div>
+          <h2 class="section-title">What People Are Saying</h2>
+        </div>
+        <div class="testi-grid">
+          <div class="testi"><div class="quote-mark">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p>I had no accounting degree but after EasyBridge's Zoho training, I landed a finance role within 3 months. Practical, India-focused, nothing like the generic stuff online.</p><div class="testi-name">Riya Sharma</div><div class="testi-role">Finance Executive, Ranchi</div></div>
+          <div class="testi"><div class="quote-mark">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p>EasyBridge implemented Zoho Books and CRM for our business in 10 weeks. Invoicing time dropped 70% and GST-ready reports are at a click.</p><div class="testi-name">Arun Poddar</div><div class="testi-role">MD, HEH Electricals, Ranchi</div></div>
+          <div class="testi"><div class="quote-mark">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p>The AI tools training is exactly what CAs in 2026 need. Practical, India-specific, no fluff. I've used the prompt templates with real clients from day one.</p><div class="testi-name">CA Priya Nair</div><div class="testi-role">Chartered Accountant, Mumbai</div></div>
+          <div class="testi"><div class="quote-mark">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p>At 48, I thought I was too old to learn new software. EasyBridge proved me wrong. The FP&amp;A service transformed how I understand my business numbers.</p><div class="testi-name">Suresh Mehta</div><div class="testi-role">Small Business Owner, Jaipur</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div class="page" id="page-contact">
+  <div class="page-content">
+    <div class="page-hd">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Bridge Your Gap.</h2>
+      <p class="section-sub">Tell us what you need — training, implementation, recruitment, or FP&amp;A. We'll respond within one business day.</p>
+    </div>
+    <div class="contact-page">
+      <div class="contact-left">
+        <h2>How can we help?</h2>
+        <p>Whether you're a student, a CA, or a business owner — Payal will personally respond to every enquiry.</p>
+        <div class="contact-ways">
+          <div class="contact-way"><div class="way-icon">📧</div><div><div class="way-label">Email</div><div class="way-val"><a href="mailto:hello@easybridge.in">hello@easybridge.in</a></div></div></div>
+          <div class="contact-way"><div class="way-icon">💬</div><div><div class="way-label">WhatsApp</div><div class="way-val"><a href="#">+91 XXXXX XXXXX</a> · Mon–Sat 10am–7pm</div></div></div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <div id="contact-form-body">
+          <h3 class="form-title">Send us a message</h3>
+          <p class="form-sub">Payal will personally review and respond to your enquiry.</p>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="Riya"/></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+          </div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="riya@example.com"/></div>
+          <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+91 98XXX XXXXX"/></div>
+          <div class="form-group"><label>I am a...</label><select><option value="">Select your role</option><option>Student</option><option>Working professional</option><option>Chartered Accountant / Tax professional</option><option>Business owner / SME</option><option>Corporate / Institution</option></select></div>
+          <div class="form-group"><label>I'm interested in</label>
+            <div class="form-services">
+              <label class="fs-opt"><input type="checkbox"/> ☁️ Cloud Training</label>
+              <label class="fs-opt"><input type="checkbox"/> 🤖 AI Tools</label>
+              <label class="fs-opt"><input type="checkbox"/> ⚙️ Implementation</label>
+              <label class="fs-opt"><input type="checkbox"/> 🔍 Recruitment</label>
+              <label class="fs-opt"><input type="checkbox"/> 📊 FP&amp;A</label>
+              <label class="fs-opt"><input type="checkbox"/> 🎯 Custom</label>
+            </div>
+          </div>
+          <div class="form-group"><label>Tell us more (optional)</label><textarea placeholder="E.g. I run a 20-person trading firm and want to implement Zoho Books..."></textarea></div>
+          <button class="form-submit" onclick="submitForm(event)">Send Message →</button>
+        </div>
+        <div class="form-success" id="form-success"><div class="success-icon">🎉</div><h3>Message received!</h3><p>Thank you for reaching out. Payal will personally review your message and reply within one business day.<br><br><strong style="color:var(--teal2)">Skills over degrees. Growth has no age.</strong></p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo" onclick="showPage('home');return false">
+        <svg width="32" height="32" viewBox="0 0 38 38"><circle cx="4" cy="28" r="3.5" fill="#0D6E6E" opacity="0.4"/><circle cx="11" cy="21" r="4.5" fill="#0D6E6E" opacity="0.7"/><circle cx="19" cy="16" r="6" fill="#1A9B9B"/><circle cx="27" cy="21" r="4.5" fill="#F5A623" opacity="0.8"/><circle cx="34" cy="28" r="3.5" fill="#F5A623" opacity="0.5"/><path d="M4 28 Q11.5 13 19 16 Q26.5 19 34 28" fill="none" stroke="#1A9B9B" stroke-width="1.5" stroke-dasharray="3,2.5" opacity="0.55"/></svg>
+        <span class="logo-text">Easy<span>Bridge</span></span>
+      </a>
+      <p>Empowering learners and businesses across India through practical skills, smart tools, and no-barrier growth.</p>
+    </div>
+    <div class="footer-col"><h4>Pricing</h4><a onclick="showPage('pricing')">Cloud Tools — Starter</a><a onclick="showPage('pricing')">Cloud Tools — Pro</a><a onclick="showPage('pricing')">AI Tools for Finance</a><a onclick="showPage('pricing')">Business Services</a></div>
+    <div class="footer-col"><h4>Who We Serve</h4><a onclick="showPage('serve')">Students</a><a onclick="showPage('serve')">Professionals &amp; CAs</a><a onclick="showPage('serve')">Business Owners</a></div>
+    <div class="footer-col"><h4>Company</h4><a onclick="showPage('about')">About Payal</a><a onclick="showPage('about')">Our Philosophy</a><a onclick="showPage('contact')">Contact Us</a></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 EasyBridge · All rights reserved · GST Invoice provided</div>
+    <div class="footer-tagline">Skills Over Degrees. Growth Has No Age.</div>
+  </div>
+</footer>
+
+<div style="position:fixed;bottom:14px;right:14px;background:linear-gradient(135deg,#0D6E6E,#1A9B9B);color:white;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;z-index:999;font-family:DM Sans,sans-serif;pointer-events:none">Template 2 · Edge</div>
+
+<script>
+function showPage(id){window.location.hash=id}
+function _renderPage(id){
+  const valid=['home','pricing','about','serve','contact'];
+  const p=valid.includes(id)?id:'home';
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  const t=document.getElementById('page-'+p);
+  if(t)t.classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.dataset.page===p));
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',()=>_renderPage(window.location.hash.slice(1)||'home'));
+window.addEventListener('DOMContentLoaded',()=>_renderPage(window.location.hash.slice(1)||'home'));
+function showPanel(id,btn){
+  document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.serve-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+id).classList.add('active');
+}
+function toggleBilling(){
+  const annual=document.getElementById('billing-toggle').checked;
+  document.getElementById('lbl-per').classList.toggle('active',!annual);
+  document.getElementById('lbl-bundle').classList.toggle('active',annual);
+  document.querySelectorAll('.pc-price').forEach(el=>{
+    el.textContent=annual?el.dataset.annual:el.dataset.monthly;
+  });
+  document.querySelectorAll('.pc-period').forEach(el=>{
+    el.textContent=annual?el.dataset.annual:el.dataset.monthly;
+  });
+}
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+function submitForm(e){
+  e.preventDefault();
+  document.getElementById('contact-form-body').style.display='none';
+  document.getElementById('form-success').style.display='block';
+}
+</script>
+</body>
+</html>

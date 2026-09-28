@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EasyBridge — Skills Over Degrees. Growth Has No Age.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --teal: #0D6E6E;
+    --teal-light: #E1F5F0;
+    --teal-dark: #084D4D;
+    --teal-mid: #1D9E75;
+    --amber: #F5A623;
+    --amber-light: #FEF3DC;
+    --dark: #0A1628;
+    --dark2: #111827;
+    --text: #1A1A2E;
+    --muted: #6B7280;
+    --surface: #F7F9FC;
+    --white: #FFFFFF;
+    --border: #E5E7EB;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 40px;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon { width: 38px; height: 38px; }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--teal-dark); letter-spacing: -0.3px; }
+  .logo-text span { color: var(--amber); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { font-size: 14px; color: var(--muted); font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal); color: white !important;
+    padding: 9px 22px; border-radius: 24px; font-size: 14px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--teal-dark) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark);
+    padding: 80px 40px 70px;
+    position: relative; overflow: hidden;
+  }
+  .hero-arc1 {
+    position: absolute; top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border: 80px solid rgba(245,166,35,0.1);
+    border-radius: 50%;
+  }
+  .hero-arc2 {
+    position: absolute; bottom: -100px; left: -60px;
+    width: 300px; height: 300px;
+    border: 60px solid rgba(13,110,110,0.15);
+    border-radius: 50%;
+  }
+  .hero-arc3 {
+    position: absolute; top: 40%; right: 15%;
+    width: 180px; height: 180px;
+    border: 30px solid rgba(245,166,35,0.07);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; max-width: 780px; margin: 0 auto; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(245,166,35,0.15);
+    color: var(--amber);
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    padding: 6px 14px; border-radius: 20px; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 900; color: white;
+    line-height: 1.1; margin-bottom: 20px;
+  }
+  .hero h1 em { color: var(--amber); font-style: normal; }
+  .hero-desc {
+    color: rgba(255,255,255,0.65);
+    font-size: 17px; line-height: 1.8;
+    max-width: 580px; margin-bottom: 36px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+  .btn-primary {
+    background: var(--amber); color: var(--dark);
+    padding: 14px 30px; border-radius: 30px;
+    font-size: 15px; font-weight: 600;
+    transition: opacity 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: white; padding: 14px 30px; border-radius: 30px;
+    font-size: 15px; font-weight: 500;
+    transition: border-color 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.6); }
+  .hero-ideology { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+  .ideology-badge {
+    display: flex; align-items: center; gap: 7px;
+    background: rgba(13,110,110,0.2);
+    border: 0.5px solid rgba(13,110,110,0.4);
+    padding: 8px 16px; border-radius: 20px;
+    font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500;
+  }
+  .ideology-badge .icon { font-size: 15px; }
+  .hero-stats {
+    display: flex; gap: 40px; flex-wrap: wrap;
+    padding-top: 36px;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+  }
+  .stat-val { font-size: 28px; font-weight: 700; color: white; }
+  .stat-val span { color: var(--amber); }
+  .stat-lbl { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1000px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3vw, 36px); font-weight: 700;
+    line-height: 1.2; margin-bottom: 12px;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--muted); line-height: 1.7;
+    max-width: 560px; margin-bottom: 48px;
+  }
+  .surface-bg { background: var(--surface); }
+  .dark-bg { background: var(--dark); }
+
+  /* ── SERVICES ── */
+  .services-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+  .filter-btn {
+    padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
+    cursor: pointer; border: 0.5px solid var(--border);
+    background: white; color: var(--muted);
+    transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+  }
+  .filter-btn.active { background: var(--teal); color: white; border-color: var(--teal); }
+  .filter-btn:hover:not(.active) { border-color: var(--teal); color: var(--teal); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .svc-card {
+    background: white; border: 0.5px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .svc-card:hover { box-shadow: 0 8px 30px rgba(13,110,110,0.1); transform: translateY(-2px); }
+  .svc-card-top { padding: 24px 24px 0; }
+  .svc-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 16px;
+  }
+  .svc-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .svc-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+  .svc-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 10px;
+  }
+  .tag-teal { background: var(--teal-light); color: var(--teal-dark); }
+  .tag-amber { background: var(--amber-light); color: #633806; }
+  .tag-purple { background: #EEEDFE; color: #3C3489; }
+  .tag-blue { background: #E6F1FB; color: #0C447C; }
+  .tag-coral { background: #FAECE7; color: #712B13; }
+  .svc-card-divider { height: 0.5px; background: var(--border); margin: 16px 0; }
+  .svc-card-body { padding: 0 24px 24px; }
+  .modules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+  .module-item {
+    padding: 12px 14px; background: var(--surface);
+    border-radius: 10px;
+  }
+  .module-item h4 { font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--teal-dark); }
+  .module-item p { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .outcomes-label { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .outcome-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 20px; }
+  .outcome-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; }
+  .outcome-dot { width: 7px; height: 7px; min-width: 7px; border-radius: 50%; background: var(--amber); margin-top: 4px; }
+  .svc-card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 16px; border-top: 0.5px solid var(--border);
+  }
+  .pricing { font-size: 13px; color: var(--muted); }
+  .pricing strong { font-size: 16px; font-weight: 600; color: var(--text); display: block; }
+  .btn-svc {
+    background: var(--teal); color: white;
+    padding: 9px 20px; border-radius: 20px; font-size: 13px; font-weight: 600;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .btn-svc:hover { background: var(--teal-dark); }
+
+  /* ── FULL WIDTH SERVICE CARD ── */
+  .svc-card-wide { grid-column: 1 / -1; }
+
+  /* ── VALUES ── */
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .value-card {
+    text-align: center; padding: 32px 20px;
+    background: white; border-radius: 16px; border: 0.5px solid var(--border);
+  }
+  .value-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 700; color: var(--teal);
+    line-height: 1;
+  }
+  .value-num span { color: var(--amber); font-size: 28px; }
+  .value-title { font-size: 15px; font-weight: 600; margin: 10px 0 6px; }
+  .value-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── WHO WE SERVE ── */
+  .serve-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .serve-tab {
+    padding: 9px 20px; border-radius: 24px; font-size: 14px; font-weight: 500;
+    cursor: pointer; border: 1px solid var(--border);
+    background: white; color: var(--muted);
+    transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+  }
+  .serve-tab.active { background: var(--teal); color: white; border-color: var(--teal); }
+  .serve-panel { display: none; }
+  .serve-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .serve-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 18px; background: white; border-radius: 12px;
+    border: 0.5px solid var(--border);
+  }
+  .serve-dot { width: 9px; height: 9px; min-width: 9px; border-radius: 50%; background: var(--amber); margin-top: 4px; }
+  .serve-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .serve-item p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .testimonial {
+    background: white; border: 0.5px solid var(--border);
+    border-radius: 16px; padding: 24px; position: relative;
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px; color: var(--teal-light);
+    position: absolute; top: 10px; right: 20px;
+    line-height: 1; pointer-events: none;
+  }
+  .testimonial p { font-size: 14px; line-height: 1.8; margin-bottom: 20px; font-style: italic; color: var(--text); }
+  .testimonial-name { font-size: 14px; font-weight: 600; color: var(--teal-dark); }
+  .testimonial-role { font-size: 12px; color: var(--muted); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner { background: var(--teal-dark); padding: 80px 40px; text-align: center; }
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; color: white; margin-bottom: 14px;
+  }
+  .cta-banner p { color: rgba(255,255,255,0.65); font-size: 16px; margin-bottom: 32px; }
+  .cta-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; }
+  .cta-input {
+    flex: 1; padding: 13px 20px; border-radius: 30px; border: none;
+    font-size: 15px; outline: none; font-family: 'DM Sans', sans-serif;
+    background: white;
+  }
+  .cta-submit {
+    background: var(--amber); color: var(--dark);
+    padding: 13px 24px; border-radius: 30px; border: none;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+    white-space: nowrap; font-family: 'DM Sans', sans-serif;
+    transition: opacity 0.2s;
+  }
+  .cta-submit:hover { opacity: 0.9; }
+  .cta-note { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 12px; }
+
+  /* ── ABOUT PAYAL ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 60px; align-items: start; }
+  .about-avatar {
+    width: 100%; aspect-ratio: 1;
+    border-radius: 20px; background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 80px; color: var(--teal); max-width: 280px;
+  }
+  .about-content h2 { margin-bottom: 6px; }
+  .about-role { font-size: 14px; color: var(--teal); font-weight: 600; margin-bottom: 20px; }
+  .about-text { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 24px; }
+  .about-credentials { display: flex; flex-direction: column; gap: 10px; }
+  .credential {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 14px; color: var(--text);
+  }
+  .credential-dot { width: 8px; height: 8px; min-width: 8px; border-radius: 50%; background: var(--teal); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--dark); padding: 60px 40px 32px; }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+    padding-bottom: 40px; border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    max-width: 1000px; margin: 0 auto 28px;
+  }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-top: 14px; max-width: 240px; }
+  .footer-col h4 { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber); margin-bottom: 16px; }
+  .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; transition: color 0.2s; }
+  .footer-col a:hover { color: white; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .footer-tagline { font-size: 12px; color: var(--amber); font-style: italic; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .hero { padding: 60px 20px 50px; }
+    .values-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .serve-panel.active { grid-template-columns: 1fr; }
+    .cta-form { flex-direction: column; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * { animation: fadeUp 0.6s ease both; }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="logo">
+    <svg class="logo-icon" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="4" cy="28" r="3.5" fill="#0D6E6E" opacity="0.35"/>
+      <circle cx="11" cy="21" r="4.5" fill="#0D6E6E" opacity="0.6"/>
+      <circle cx="19" cy="16" r="6" fill="#0D6E6E"/>
+      <circle cx="27" cy="21" r="4.5" fill="#F5A623" opacity="0.8"/>
+      <circle cx="34" cy="28" r="3.5" fill="#F5A623" opacity="0.5"/>
+      <path d="M4 28 Q11.5 13 19 16 Q26.5 19 34 28" fill="none" stroke="#0D6E6E" stroke-width="1.5" stroke-dasharray="3,2.5" opacity="0.45"/>
+    </svg>
+    <span class="logo-text">Easy<span>Bridge</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#serve">Who We Serve</a>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-arc1"></div>
+  <div class="hero-arc2"></div>
+  <div class="hero-arc3"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Skills · Growth · No Barriers</div>
+    <h1>No Degree Required.<br>No Age Limit.<br>Just <em>Skills.</em></h1>
+    <p class="hero-desc">EasyBridge empowers students, professionals, and businesses through cloud tools training, AI upskilling, business implementation, recruitment, and FP&amp;A — because a skilled person is valued everywhere.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">Explore Our Services</a>
+      <a href="#contact" class="btn-outline">Talk to Us →</a>
+    </div>
+    <div class="hero-ideology">
+      <div class="ideology-badge"><span class="icon">🎓</span> No degree needed</div>
+      <div class="ideology-badge"><span class="icon">🌱</span> Any age, any stage</div>
+      <div class="ideology-badge"><span class="icon">🇮🇳</span> India-focused</div>
+      <div class="ideology-badge"><span class="icon">⚡</span> Skills over certificates</div>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-val">500<span>+</span></div><div class="stat-lbl">Professionals trained</div></div>
+      <div><div class="stat-val">80<span>+</span></div><div class="stat-lbl">SMEs served</div></div>
+      <div><div class="stat-val">5</div><div class="stat-lbl">Service streams</div></div>
+      <div><div class="stat-val">CA</div><div class="stat-lbl">Expert-led advisory</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Five Ways EasyBridge<br>Helps You Grow</h2>
+    <p class="section-sub">From first-time learners to growing businesses — full-journey support with no barriers, no gatekeeping.</p>
+
+    <div class="services-filter">
+      <button class="filter-btn active" onclick="filterSvc('all',this)">All services</button>
+      <button class="filter-btn" onclick="filterSvc('learner',this)">For learners</button>
+      <button class="filter-btn" onclick="filterSvc('professional',this)">For professionals</button>
+      <button class="filter-btn" onclick="filterSvc('business',this)">For businesses</button>
+    </div>
+
+    <div class="services-grid" id="svc-grid">
+
+      <!-- CARD 1: Cloud Tools -->
+      <div class="svc-card" data-aud="learner professional">
+        <div class="svc-card-top">
+          <div class="svc-icon" style="background:#E1F5F0;">☁️</div>
+          <h3>Cloud Tools Training</h3>
+          <p>Hands-on training on India's most in-demand cloud accounting and business software. Job-ready skills, no prior degree needed.</p>
+          <div class="svc-tags">
+            <span class="tag tag-teal">For learners</span>
+            <span class="tag tag-teal">For professionals</span>
+            <span class="tag tag-amber">Certificate</span>
+          </div>
+          <div class="svc-card-divider"></div>
+        </div>
+        <div class="svc-card-body">
+          <div class="modules-grid">
+            <div class="module-item"><h4>Zoho Books &amp; One</h4><p>Accounting, GST filing, invoicing, inventory, payroll</p></div>
+            <div class="module-item"><h4>Tally on Cloud</h4><p>Remote multi-user access, backup, cloud migration</p></div>
+            <div class="module-item"><h4>QuickBooks Online</h4><p>International-standard cloud accounting for SMEs</p></div>
+            <div class="module-item"><h4>Excel &amp; Google Sheets</h4><p>Advanced formulas, dashboards, financial modelling</p></div>
+          </div>
+          <div class="outcomes-label">What you get</div>
+          <div class="outcome-list">
+            <div class="outcome-item"><div class="outcome-dot"></div>Live instructor-led batches + recorded sessions</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>India GST, TDS, and compliance integrated throughout</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Real-world case studies and practice datasets</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>EasyBridge completion certificate, recognised by employers</div>
+          </div>
+          <div class="svc-card-footer">
+            <div class="pricing">Starting from<strong>₹2,999 / course</strong></div>
+            <a href="#contact" class="btn-svc">Enrol now →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: AI Tools -->
+      <div class="svc-card" data-aud="professional learner">
+        <div class="svc-card-top">
+          <div class="svc-icon" style="background:#EEEDFE;">🤖</div>
+          <h3>AI Tools Training for Finance &amp; Law</h3>
+          <p>Practical, India-specific AI upskilling for CAs, tax professionals, litigators, and finance teams. AI wisely — not blindly.</p>
+          <div class="svc-tags">
+            <span class="tag tag-purple">For CAs</span>
+            <span class="tag tag-purple">For tax professionals</span>
+            <span class="tag tag-amber">Advanced</span>
+          </div>
+          <div class="svc-card-divider"></div>
+        </div>
+        <div class="svc-card-body">
+          <div class="modules-grid">
+            <div class="module-item"><h4>AI for Tax &amp; GST</h4><p>GSTR reconciliation, 26AS matching, TDS automation</p></div>
+            <div class="module-item"><h4>AI for Litigation</h4><p>Draft notices, ITAT replies, CIT(A) submissions faster</p></div>
+            <div class="module-item"><h4>AI for Accounting</h4><p>Reconciliation, anomaly detection, MIS generation</p></div>
+            <div class="module-item"><h4>Prompt Engineering</h4><p>Best outputs from Claude, ChatGPT, Gemini for finance</p></div>
+          </div>
+          <div class="outcomes-label">What you get</div>
+          <div class="outcome-list">
+            <div class="outcome-item"><div class="outcome-dot"></div>India-law grounded content — not generic global AI training</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Ready-to-use prompt templates for real client work</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Ethics and compliance guardrails built in</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>CPE-credit eligible sessions for ICAI members</div>
+          </div>
+          <div class="svc-card-footer">
+            <div class="pricing">Starting from<strong>₹3,999 / workshop</strong></div>
+            <a href="#contact" class="btn-svc">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: Business Implementation -->
+      <div class="svc-card" data-aud="business">
+        <div class="svc-card-top">
+          <div class="svc-icon" style="background:#E1F5F0;">⚙️</div>
+          <h3>Business Implementation</h3>
+          <p>We deploy the right cloud and automation stack for your SME — from scoping to go-live to team training. No tech team needed on your side.</p>
+          <div class="svc-tags">
+            <span class="tag tag-teal">For SMEs</span>
+            <span class="tag tag-teal">5–100 person teams</span>
+            <span class="tag tag-amber">Project-based</span>
+          </div>
+          <div class="svc-card-divider"></div>
+        </div>
+        <div class="svc-card-body">
+          <div class="modules-grid">
+            <div class="module-item"><h4>Zoho One Setup</h4><p>Books, CRM, Inventory, Flow, Analytics — end to end</p></div>
+            <div class="module-item"><h4>Data Migration</h4><p>Clean, verified move from Tally, Excel, or legacy systems</p></div>
+            <div class="module-item"><h4>Workflow Automation</h4><p>Approvals, invoicing, reminders — 70% less manual work</p></div>
+            <div class="module-item"><h4>Team Training</h4><p>Role-specific training for finance, sales, operations</p></div>
+          </div>
+          <div class="outcomes-label">What you get</div>
+          <div class="outcome-list">
+            <div class="outcome-item"><div class="outcome-dot"></div>Detailed scoping report before any commitment</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Phased delivery with milestones and sign-off at each stage</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>India GST, TDS, and compliance configured from day one</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>90-day post-go-live support included as standard</div>
+          </div>
+          <div class="svc-card-footer">
+            <div class="pricing">Starting from<strong>₹45,000 / project</strong></div>
+            <a href="#contact" class="btn-svc">Get a quote →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4: Recruitment -->
+      <div class="svc-card" data-aud="business">
+        <div class="svc-card-top">
+          <div class="svc-icon" style="background:#E6F1FB;">🔍</div>
+          <h3>Skill-First Recruitment</h3>
+          <p>We find people who can actually do the job — not just those with the right degree. Right-fit hiring for finance, accounts, and operations in Indian SMEs.</p>
+          <div class="svc-tags">
+            <span class="tag tag-blue">For business owners</span>
+            <span class="tag tag-amber">Per-hire or retainer</span>
+          </div>
+          <div class="svc-card-divider"></div>
+        </div>
+        <div class="svc-card-body">
+          <div class="modules-grid">
+            <div class="module-item"><h4>Role scoping</h4><p>Real skill-based JDs, not recycled templates</p></div>
+            <div class="module-item"><h4>Skills screening</h4><p>Zoho, Excel, GST practical tests before you meet anyone</p></div>
+            <div class="module-item"><h4>Shortlisting</h4><p>3–5 pre-vetted, skill-verified candidates per role</p></div>
+            <div class="module-item"><h4>30-day guarantee</h4><p>Free replacement if the hire doesn't work out</p></div>
+          </div>
+          <div class="outcomes-label">Roles we fill</div>
+          <div class="outcome-list">
+            <div class="outcome-item"><div class="outcome-dot"></div>Accounts executive, GST assistant, TDS officer</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Zoho / Tally operator, cloud accounting associate</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Finance manager, MIS analyst, FP&amp;A executive</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Operations coordinator and back-office support</div>
+          </div>
+          <div class="svc-card-footer">
+            <div class="pricing">Success fee<strong>8–12% of annual CTC</strong></div>
+            <a href="#contact" class="btn-svc">Hire talent →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5: FP&A — Wide -->
+      <div class="svc-card svc-card-wide" data-aud="business">
+        <div class="svc-card-top">
+          <div class="svc-icon" style="background:#FAECE7;">📊</div>
+          <h3>FP&amp;A In-House — Managed Service</h3>
+          <p>CFO-level financial planning and analysis without a full-time CFO. Monthly MIS, budgets, forecasts, and live dashboards — delivered by a Chartered Accountant who knows your business.</p>
+          <div class="svc-tags">
+            <span class="tag tag-coral">For growing SMEs</span>
+            <span class="tag tag-coral">Monthly retainer</span>
+            <span class="tag tag-amber">CA-led</span>
+          </div>
+          <div class="svc-card-divider"></div>
+        </div>
+        <div class="svc-card-body">
+          <div class="modules-grid" style="grid-template-columns:repeat(4,1fr)">
+            <div class="module-item"><h4>Monthly MIS</h4><p>P&amp;L, Balance Sheet, Cash Flow, 10+ KPIs by the 5th of every month</p></div>
+            <div class="module-item"><h4>Budgeting &amp; Forecasting</h4><p>Annual budget, rolling quarterly forecasts, variance analysis</p></div>
+            <div class="module-item"><h4>Business Dashboard</h4><p>Live Zoho Analytics or Google Data Studio — always current</p></div>
+            <div class="module-item"><h4>Monthly Review Call</h4><p>60-minute deep-dive with your CA — numbers, decisions, next steps</p></div>
+          </div>
+          <div class="outcomes-label">What you get</div>
+          <div class="outcome-list" style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+            <div class="outcome-item"><div class="outcome-dot"></div>Know exactly where your money is going and why</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Identify silent profit killers before they become crises</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Bank-ready and investor-ready financials at all times</div>
+            <div class="outcome-item"><div class="outcome-dot"></div>Human CA judgment — not just automated software reports</div>
+          </div>
+          <div class="svc-card-footer" style="margin-top:18px">
+            <div class="pricing">Starting from<strong>₹8,000 / month</strong></div>
+            <a href="#contact" class="btn-svc">Enquire now →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY EASYBRIDGE -->
+<section class="surface-bg">
+  <div class="section-inner">
+    <div class="section-label">Our Philosophy</div>
+    <h2 class="section-title">Why EasyBridge?</h2>
+    <p class="section-sub">We believe skills are the great equaliser. A 45-year-old learning Zoho Books or a 22-year-old without a finance degree — both deserve a fair shot at growth.</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num">0<span>°</span></div>
+        <div class="value-title">Age Barrier</div>
+        <div class="value-desc">Learning has no expiry date. We welcome every age, every background, every starting point.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">∞</div>
+        <div class="value-title">Growth Paths</div>
+        <div class="value-desc">From first-time student to CA to business owner — every stage of your journey, covered.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">1<span>st</span></div>
+        <div class="value-title">Skill, Always</div>
+        <div class="value-desc">We value what you can do, not what paper says. A skilled person is valued everywhere.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section id="serve">
+  <div class="section-inner">
+    <div class="section-label">Who We Serve</div>
+    <h2 class="section-title">Built for Everyone<br>Who Wants to Grow</h2>
+    <div class="serve-tabs">
+      <button class="serve-tab active" onclick="showPanel('students',this)">Students</button>
+      <button class="serve-tab" onclick="showPanel('professionals',this)">Professionals</button>
+      <button class="serve-tab" onclick="showPanel('business',this)">Business Owners</button>
+    </div>
+    <div id="panel-students" class="serve-panel active">
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>No prior degree needed</h4><p>Learn cloud accounting and AI tools from complete scratch — we start where you are.</p></div></div>
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>Job-ready training</h4><p>Courses mapped to real employer demand for finance roles across India's SME sector.</p></div></div>
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>Certificates that matter</h4><p>Practical skills employers actually look for — not theoretical degrees gathering dust.</p></div></div>
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>Affordable access</h4><p>Pricing built for students, not corporations. Flexible payment options available.</p></div></div>
+    </div>
+    <div id="panel-professionals" class="serve-panel">
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>CA &amp; tax upskilling</h4><p>AI tools for GST, TDS, ITR, advance tax, and litigation — India-specific, not generic.</p></div></div>
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>Cloud migration support</h4><p>Move from manual workflows to cloud without disrupting your client commitments.</p></div></div>
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>Zoho &amp; ERP mastery</h4><p>Deep-dive training for finance teams on leading cloud platforms used across India.</p></div></div>
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>Flexible schedules</h4><p>Weekend and evening batches designed around CA and professional workloads.</p></div></div>
+    </div>
+    <div id="panel-business" class="serve-panel">
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>Full Zoho implementation</h4><p>From setup to data migration to team training to go-live — end to end, no tech team required.</p></div></div>
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>FP&amp;A as a service</h4><p>Monthly financial analysis and dashboards without hiring a full-time CFO or analyst.</p></div></div>
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>Skill-first recruitment</h4><p>We find people who can genuinely do the job — pre-screened, skill-verified candidates.</p></div></div>
+      <div class="serve-item"><div class="serve-dot"></div><div><h4>SME-focused advisory</h4><p>Built specifically for 5–100 person businesses in India — not scaled-down enterprise advice.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="surface-bg">
+  <div class="section-inner">
+    <div class="section-label">Social Proof</div>
+    <h2 class="section-title">What Our Clients &amp; Learners Say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p>I had no accounting degree but after EasyBridge's Zoho training, I landed a finance role within 3 months. The course was practical, India-focused, and nothing like the generic stuff online.</p>
+        <div class="testimonial-name">Riya Sharma</div>
+        <div class="testimonial-role">Finance Executive, Ranchi</div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p>EasyBridge implemented Zoho Books and CRM for our electrical trading business in 10 weeks. Our invoicing time dropped by 70% and we finally have GST-ready reports at a click.</p>
+        <div class="testimonial-name">Arun Poddar</div>
+        <div class="testimonial-role">MD, HEH Electricals, Ranchi</div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p>The AI tools for tax training is exactly what CAs in 2026 need. Practical, India-specific, and no fluff. I've already used the prompt templates with real clients.</p>
+        <div class="testimonial-name">CA Priya Nair</div>
+        <div class="testimonial-role">Chartered Accountant, Mumbai</div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p>At 48, I thought I was too old to learn new software. EasyBridge proved me completely wrong. The FP&amp;A service has also transformed how I understand my own business numbers.</p>
+        <div class="testimonial-name">Suresh Mehta</div>
+        <div class="testimonial-role">Small Business Owner, Jaipur</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="about-avatar">P</div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">About EasyBridge</div>
+        <h2 class="section-title">Founded by a CA.<br>Built for Everyone Else.</h2>
+        <div class="about-role">Payal — Chartered Accountant &amp; Founder, EasyBridge</div>
+        <p class="about-text">EasyBridge was built on a simple belief: skills matter more than degrees. As a practicing CA working at the intersection of finance, technology, and business advisory, I saw firsthand how talented people were held back by gatekeeping — and how businesses struggled to find the right help.<br><br>EasyBridge bridges both gaps. We train the skilled. We implement the tools. We connect the talent. And we bring financial clarity to businesses that need it.</p>
+        <div class="about-credentials">
+          <div class="credential"><div class="credential-dot"></div>Chartered Accountant (ICAI)</div>
+          <div class="credential"><div class="credential-dot"></div>Zoho implementation specialist — 80+ SME deployments</div>
+          <div class="credential"><div class="credential-dot"></div>India GST, TDS, Income Tax, MCA compliance expert</div>
+          <div class="credential"><div class="credential-dot"></div>AI tools adoption advocate for finance professionals</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" id="contact">
+  <h2>Ready to Bridge the Gap?</h2>
+  <p>Join hundreds of learners and businesses who chose skills over certificates.</p>
+  <form class="cta-form" onsubmit="handleSubmit(event)">
+    <input class="cta-input" type="email" placeholder="Your email address" required/>
+    <button class="cta-submit" type="submit">Get Started Today</button>
+  </form>
+  <p class="cta-note">No spam. Just one welcome email with next steps.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <svg style="width:36px;height:36px" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="4" cy="28" r="3.5" fill="#0D6E6E" opacity="0.4"/>
+          <circle cx="11" cy="21" r="4.5" fill="#0D6E6E" opacity="0.65"/>
+          <circle cx="19" cy="16" r="6" fill="#5DCAA5"/>
+          <circle cx="27" cy="21" r="4.5" fill="#F5A623" opacity="0.75"/>
+          <circle cx="34" cy="28" r="3.5" fill="#F5A623" opacity="0.45"/>
+          <path d="M4 28 Q11.5 13 19 16 Q26.5 19 34 28" fill="none" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="3,2.5" opacity="0.55"/>
+        </svg>
+        <span class="logo-text" style="color:#E1F5F0">Easy<span>Bridge</span></span>
+      </a>
+      <p>Empowering learners and businesses across India through practical skills, smart tools, and no-barrier growth. Founded by a CA, built for everyone.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Cloud Tools Training</a>
+      <a href="#services">AI Tools for Finance</a>
+      <a href="#services">Business Implementation</a>
+      <a href="#services">Skill-First Recruitment</a>
+      <a href="#services">FP&amp;A In-House</a>
+    </div>
+    <div class="footer-col">
+      <h4>Who We Serve</h4>
+      <a href="#serve">Students</a>
+      <a href="#serve">Professionals &amp; CAs</a>
+      <a href="#serve">Business Owners</a>
+      <a href="#serve">SMEs in India</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about">About Payal</a>
+      <a href="#about">Our Philosophy</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#contact">Get Started</a>
+    </div>
+  </div>
+  <div class="footer-bottom" style="max-width:1000px;margin:0 auto">
+    <div class="footer-copy">© 2026 EasyBridge · All rights reserved</div>
+    <div class="footer-tagline">Skills Over Degrees. Growth Has No Age.</div>
+  </div>
+</footer>
+
+<script>
+  function filterSvc(aud, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.svc-card').forEach(card => {
+      if (aud === 'all') { card.style.display = ''; return; }
+      const a = card.getAttribute('data-aud') || '';
+      card.style.display = a.includes(aud) ? '' : 'none';
+    });
+  }
+
+  function showPanel(id, btn) {
+    document.querySelectorAll('.serve-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.serve-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + id).classList.add('active');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✓ We\'ll be in touch!';
+    btn.style.background = '#0D6E6E';
+    btn.style.color = 'white';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
